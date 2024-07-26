@@ -1,11 +1,12 @@
 {
-  "name": "mern-crud-auth3",
+  "name": "spa_tasks",
   "version": "1.0.0",
-  "description": "",
+  "description": "spa-tasks is a web application that allows you to have a personalized to-do list",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
