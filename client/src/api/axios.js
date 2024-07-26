@@ -1,7 +1,8 @@
 import axios from "axios";
 
+const URL = "https://spa-tasks.onrender.com/api" //"localhost:4000/api"; 
 const instanceAxios = axios.create({
-    baseURL: "http://localhost:4000/api",
+    baseURL: URL,
     withCredentials: true
 });
 
