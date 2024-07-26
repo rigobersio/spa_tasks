@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: spa-tasks
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.10.0
+      - key: FRONTEND_URL
+        value: http://localhost:5173
