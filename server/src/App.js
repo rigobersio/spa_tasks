@@ -6,9 +6,11 @@ import cors from 'cors';
 import authRoutes from "./routes/auth.routes.js";
 import taskRoutes from "./routes/tasks.routes.js";
 
+
+const URL = process.env.FRONTEND_URL // "https://spa-tasks.vercel.app/""
 const app = express();
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: URL,
   credentials: true,
 }));
 
