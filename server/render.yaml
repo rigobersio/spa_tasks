@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: spa-tasks
+    name: spa-tasks-server
     env: node
     plan: free
     buildCommand: npm install
@@ -9,4 +9,4 @@ services:
       - key: NODE_VERSION
         value: 20.10.0
       - key: FRONTEND_URL
-        value: https://spa-tasks.vercel.app/
+        value: https://spa-tasks.onrender.com
