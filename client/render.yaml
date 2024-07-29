@@ -2,5 +2,5 @@ services:
   - type: web
     name: spa-tasks
     env: static
-    staticPublishPath: /build
+    staticPublishPath: build
     buildCommand: npm install && npm run build
