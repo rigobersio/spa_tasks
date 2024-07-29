@@ -82,15 +82,10 @@ export const login = async (req, res) => {
 
     const token = await createAccessToken({ id: userFound._id });
 
-    // Configurar la cookie con SameSite=None y Secure
-    // acá hay un tema bastante complejo con el token enviado por la cookie
-    // que se asigne en el front y poder acceder a el es un tema complejo que requiere 
-    //ajustes en cors, en axios(en el front) y eventualmente más argumentos en res.cookie
-    // finalmente es posible que se requieran modificaciones adicionales en el futuro
-    // una opción más recomendable puede ser localStorage o sessionStorage en vez de cookies
+    
     res.cookie('token', token, {
-      httpOnly: false, //esto en true bloquea el acceso a la cookie para JS en el front 
-      secure: true, // usar HTTPS en producción
+      httpOnly: false, 
+      secure: true, 
       sameSite: 'none',
     });
     res.json({
