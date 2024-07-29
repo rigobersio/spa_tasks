@@ -7,7 +7,7 @@ import authRoutes from "./routes/auth.routes.js";
 import taskRoutes from "./routes/tasks.routes.js";
 
 
-const URL = "https://spa-tasks.onrender.com" //process.env.FRONTEND_URL // "https://spa-tasks.vercel.app/"
+const URL = process.env.FRONTEND_URL
 const app = express();
 app.use(cors({
   origin: URL,
