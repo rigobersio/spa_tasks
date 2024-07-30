@@ -23,5 +23,9 @@ app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use("/api", taskRoutes);
 
+app.get('/', (req, res) => {
+  res.status(200).send('SPA-Tasks API');
+});
+
 export default app;
 

@@ -14,8 +14,10 @@ const LoginPage = () => {
       const res = await loginRequest(data);
       console.log('soy res: ', res);
 
-      const token = Cookies.get('token');
-      console.log("token: ", token);
+       // Intento de obtener el token desde la respuesta directamente
+       const token = res.data.token || Cookies.get('token');
+       console.log('soy res.data.token: ', res.data.token);
+       console.log("token: ", token);
 
       if (token) {
         login(token);
