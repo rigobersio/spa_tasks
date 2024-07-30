@@ -87,6 +87,7 @@ export const login = async (req, res) => {
       httpOnly: false, 
       secure: true, 
       sameSite: 'none',
+      partitioned: true
     });
     res.json({
       id: userFound._id,
