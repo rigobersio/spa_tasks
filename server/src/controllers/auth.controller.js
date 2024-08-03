@@ -3,6 +3,18 @@ import bcrypt from 'bcryptjs';
 import { createAccessToken } from "../libs/jwt.js";
 
 
+export const verifyToken = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ isAuthenticated: false });
+
+    res.json({ isAuthenticated: true });
+  } catch (error) {
+    console.error("Error verifying token:", error);
+    res.status(500).json({ isAuthenticated: false });
+  }
+};
+
 export const register = async (req, res) => {
   const { email, password, username } = req.body;
 
@@ -84,7 +96,7 @@ export const login = async (req, res) => {
 
     
     res.cookie('token', token, {
-      httpOnly: false, 
+      httpOnly: true, 
       secure: 'production', 
       sameSite: 'none',
       partitioned: true,
