@@ -31,16 +31,13 @@ export const register = async (req, res) => {
     const userSaved = await newUser.save();
     const token = await createAccessToken({ id: userSaved._id });
 
-    // Configurar la cookie con SameSite=None y Secure
-    // acá hay un tema bastante complejo con el token enviado por la cookie
-    // que se asigne en el front y poder acceder a el es un tema complejo que requiere 
-    //ajustes en cors, en axios(en el front) y eventualmente más argumentos en res.cookie
-    // finalmente es posible que se requieran modificaciones adicionales en el futuro
-    // una opción más recomendable puede ser localStorage o sessionStorage en vez de cookies
+
     res.cookie('token', token, {
-      httpOnly: false, //esto en true bloquea el acceso a la cookie para JS en el front 
-      secure: true, // usar HTTPS en producción
-      sameSite: 'None',
+      httpOnly: true,
+      secure: 'production',
+      sameSite: 'none',
+      partitioned: true,
+      domain: '.onrender.com',
     });
     res.json({
       id: userSaved._id,
@@ -94,10 +91,10 @@ export const login = async (req, res) => {
 
     const token = await createAccessToken({ id: userFound._id });
 
-    
+
     res.cookie('token', token, {
-      httpOnly: true, 
-      secure: 'production', 
+      httpOnly: true,
+      secure: 'production',
       sameSite: 'none',
       partitioned: true,
       domain: '.onrender.com',
@@ -118,9 +115,10 @@ export const login = async (req, res) => {
 export const logout = (req, res) => {
   res.cookie('token', "", {
     expires: new Date(0),
-    httpOnly: true,
-    secure: true,
+    secure: 'production',
     sameSite: 'none',
+    partitioned: true,
+    domain: '.onrender.com',
   });
   return res.sendStatus(200);
 }
