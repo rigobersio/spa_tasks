@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import Cookies from 'js-cookie';
 import { loginRequest } from "../api/auth";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -12,22 +11,18 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       const res = await loginRequest(data);
-      console.log('soy res: ', res);
+      console.log('Login response:', res);
 
-       // Intento de obtener el token desde la respuesta directamente
-       const token = res.data.token || Cookies.get('token');
-       console.log('soy res.data.token: ', res.data.token);
-       console.log("token: ", token);
-
-      if (token) {
-        login(token);
+      if (res.status === 200) {
+        login();
         navigate("/tasks");
+      } else {
+        console.error("Login failed");
       }
     } catch (error) {
-      console.log(error);
+      console.log("Login error:", error);
     }
   };
-
 
   return (
     <div>

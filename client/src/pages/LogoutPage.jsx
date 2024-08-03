@@ -11,9 +11,9 @@ const LogoutPage = () => {
     try {
       await logoutRequest();
       logout();
-      navigate("/login");
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log("Logout error:", error);
     }
   };
 

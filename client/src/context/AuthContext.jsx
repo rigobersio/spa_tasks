@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import { verifyTokenRequest, logoutRequest } from '../api/auth';
 
 const AuthContext = createContext();
 
@@ -8,21 +8,36 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    const token = Cookies.get('token');
-    if (token) {
-      setIsAuthenticated(true);
+  // Función para verificar el token
+  const verifyToken = async () => {
+    try {
+      const res = await verifyTokenRequest();
+      setIsAuthenticated(res.data.isAuthenticated);
+    } catch (error) {
+      console.error("Error verifying token:", error);
+      setIsAuthenticated(false);
     }
-  }, []);
-
-  const login = (token) => {
-    Cookies.set('token', token);
-    setIsAuthenticated(true);
   };
 
-  const logout = () => {
-    Cookies.remove('token');
-    setIsAuthenticated(false);
+  // Verificar el token al montar el componente
+  useEffect(() => {
+    verifyToken();
+  }, []);
+
+  // Función de login que verifica el token
+  const login = async () => {
+    verifyToken();
+  };
+
+  // Función de logout que llama al backend para cerrar sesión
+  const logout = async () => {
+    try {
+      await logoutRequest();
+      setIsAuthenticated(false);
+    } catch (error) {
+      console.error("Error during logout:", error, "forced logout");
+      setIsAuthenticated(false);
+    }
   };
 
   return (
