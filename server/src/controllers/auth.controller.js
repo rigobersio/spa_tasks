@@ -87,7 +87,8 @@ export const login = async (req, res) => {
       httpOnly: false, 
       secure: 'production', 
       sameSite: 'none',
-      partitioned: true
+      partitioned: true,
+      domain: '.onrender.com',
     });
     res.json({
       id: userFound._id,
