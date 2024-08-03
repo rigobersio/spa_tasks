@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-//import {TOKEN_SECRET} from '../config.js';
 
 const TOKEN_SECRET = process.env.TOKEN_SECRET
 export const authRequired = (req,res,next) => {
