@@ -14,7 +14,9 @@ const LoginPage = () => {
       console.log('Login response:', res);
 
       if (res.status === 200) {
+        console.log('entre en el if status 200');
         login();
+        console.log('voy despues de login()');
         navigate("/tasks");
       } else {
         console.error("Login failed");
