@@ -1,19 +1,36 @@
 import { useForm } from "react-hook-form";
+import { useState, useEffect } from 'react';
 import { registerRequest } from "../api/auth";
-
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const RegisterPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [usernameCreated, setUsernameCreated] = useState(false);
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    //console.log(data);
     try {
       const res = await registerRequest(data);
-      console.log(res);
+      if (res.status === 200) {
+        toast.success(`User ${res.data.username} created successfully!`);
+        setUsernameCreated(true);
+      } else {
+        toast.error('Registration failed');
+      }
     } catch (error) {
-      console.log(error);
+      toast.error('Registration error');
+      console.log("Registration error:", error);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated || usernameCreated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, usernameCreated, navigate]);
 
   return (
     <div>
@@ -88,7 +105,6 @@ const RegisterPage = () => {
       </div>
     </div>
   );
-
 }
 
 export default RegisterPage;
