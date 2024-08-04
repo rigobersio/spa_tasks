@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
       const res = await verifyTokenRequest();
       setIsAuthenticated(res.data.isAuthenticated);
     } catch (error) {
-      console.error("Error verifying token:", error);
+      console.error("Error verifying token context:", error);
       setIsAuthenticated(false);
     }
   };
