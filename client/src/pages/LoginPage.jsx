@@ -2,10 +2,11 @@ import { useForm } from "react-hook-form";
 import { loginRequest } from "../api/auth";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
@@ -14,17 +15,23 @@ const LoginPage = () => {
       console.log('Login response:', res);
 
       if (res.status === 200) {
-        console.log('entre en el if status 200');
+        toast.success("Login successful!");
         login();
-        console.log('voy despues de login()');
-        navigate("/tasks");
       } else {
+        toast.error("Login failed");
         console.error("Login failed");
       }
     } catch (error) {
+      toast.error("Login error");
       console.log("Login error:", error);
     }
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/tasks");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div>
