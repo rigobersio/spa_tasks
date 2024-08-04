@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import path from 'path';
+//import path from 'path';
 
 import authRoutes from "./routes/auth.routes.js";
 import taskRoutes from "./routes/tasks.routes.js";
@@ -28,10 +28,11 @@ app.use("/api", taskRoutes);
 
 
 // Ruta catch-all para servir "index.html"(front) en cualquier otra ruta no gestionada por el backend
+/*
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-
+*/
 app.get('/', (req, res) => {
   res.status(200).send('SPA-Tasks API');
 });
