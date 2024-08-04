@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { verifyTokenRequest, logoutRequest } from '../api/auth';
+import { toast } from 'react-toastify';
 
 const AuthContext = createContext();
 
@@ -8,28 +9,25 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Función para verificar el token
   const verifyToken = async () => {
     try {
       const res = await verifyTokenRequest();
       setIsAuthenticated(res.data.isAuthenticated);
     } catch (error) {
       console.error("Error verifying token context:", error);
+      toast.error("Error verifying token");
       setIsAuthenticated(false);
     }
   };
 
-  // Verificar el token al montar el componente
   useEffect(() => {
     verifyToken();
   }, []);
 
-  // Función de login que verifica el token
   const login = async () => {
     verifyToken();
   };
 
-  // Función de logout que llama al backend para cerrar sesión
   const logout = async () => {
     try {
       await logoutRequest();
