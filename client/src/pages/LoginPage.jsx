@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { loginRequest } from "../api/auth";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+//import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -15,10 +15,10 @@ const LoginPage = () => {
       console.log('Login response:', res);
 
       if (res.status === 200) {
-        toast.success("Login successful!");
+        //toast.success("Login successful!");
         login();
       } else {
-        toast.error("Login failed");
+        //toast.error("Login failed");
         console.error("Login failed");
       }
     } catch (error) {
