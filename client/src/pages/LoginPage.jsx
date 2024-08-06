@@ -22,7 +22,7 @@ const LoginPage = () => {
         console.error("Login failed");
       }
     } catch (error) {
-      toast.error("Login error");
+      //toast.error("Login error");
       console.log("Login error:", error);
     }
   };
