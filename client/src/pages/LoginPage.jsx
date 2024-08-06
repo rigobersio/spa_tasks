@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form";
 import { loginRequest } from "../api/auth";
-//import { useAuth } from '../context/AuthContext';
-//import { useNavigate } from 'react-router-dom';
-//import { toast } from 'react-toastify';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  //const { login, isAuthenticated } = useAuth();
-  //const navigate = useNavigate();
+  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
@@ -15,24 +14,22 @@ const LoginPage = () => {
       console.log('Login response:', res);
 
       if (res.status === 200) {
-        //toast.success("Login successful!");
-        //login();
+        console.log('Login successful!');
+        login();
       } else {
-        //toast.error("Login failed");
         console.error("Login failed");
       }
     } catch (error) {
-      //toast.error("Login error");
       console.log("Login error:", error);
     }
   };
-/*
+
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/tasks");
     }
   }, [isAuthenticated, navigate]);
-*/
+
   return (
     <div>
       <div className="bg-green-50 text-green-900 p-6 sm:mx-0 mx-[5%] rounded-lg shadow-md">
