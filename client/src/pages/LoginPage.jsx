@@ -23,13 +23,15 @@ const LoginPage = () => {
       console.log("Login error:", error);
     }
   };
-/*
+
   useEffect(() => {
+    console.log("isAuthenticated:", isAuthenticated);
     if (isAuthenticated) {
+      console.log("Navigating to /tasks");
       navigate("/tasks");
     }
   }, [isAuthenticated, navigate]);
-*/
+  
   return (
     <div>
       <div className="bg-green-50 text-green-900 p-6 sm:mx-0 mx-[5%] rounded-lg shadow-md">
