@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(res.data.isAuthenticated);
     } catch (error) {
       console.error("Error verifying token context:", error);
-      toast.error("Error verifying token");
+      //toast.error("Error verifying token");
       setIsAuthenticated(false);
     }
   };
