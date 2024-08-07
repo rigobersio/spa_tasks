@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react';
-import { registerRequest } from "../api/auth";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+
 import { useAuth } from '../context/AuthContext';
+import { registerRequest } from "../api/auth";
+
 
 const RegisterPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();

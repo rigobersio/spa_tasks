@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { getProfileRequest, updateProfileRequest } from '../api/auth';
 import ConfirmPasswordModal from '../components/ConfirmPasswordModal';
-import { toast } from 'react-toastify';
+
 
 const ProfilePage = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();

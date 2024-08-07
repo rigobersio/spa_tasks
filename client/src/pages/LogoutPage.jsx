@@ -1,7 +1,10 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import { logoutRequest } from '../api/auth';
+import { useAuth } from '../context/AuthContext';
+
 
 const LogoutPage = () => {
   const { logout } = useAuth();
@@ -11,9 +14,11 @@ const LogoutPage = () => {
     try {
       await logoutRequest();
       logout();
+      toast.success("Logout successful!");
       navigate("/");
     } catch (error) {
-      console.log("Logout error:", error);
+      //console.log("Logout error:", error);
+      toast.error("Logout error");
     }
   };
 
