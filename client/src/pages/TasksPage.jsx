@@ -95,7 +95,7 @@ const TasksPage = () => {
               Hello human! I'm an investigator of the mysteries of the canine universe 🎓🧠. My name is Canfeynman 🐕 and I'll be here to assist you with the 'Tasks' tool. You can relax and trust me, it's quite simple:
             </p>
             <ol className="mb-4 space-y-4">
-              <li className='flex items-center'>1. To add new tasks, simply click on the <FcPlus className="mx-1 text-base" /> icon (the task date is optional).</li>
+              <li className='flex items-center'>1. To add new tasks, simply click on the <FcPlus className="mx-1 text-2xl" /> icon (the task date is optional).</li>
               <li>2. Once you add a new task, it will automatically appear in the Tasks List 📝.</li>
               <li>3. To view details about a specific task, simply select by clicking on the task 🖱️.</li>
               <li>4. Within a task, you can edit it ✏️ or delete it 🗑️ as needed.</li>
