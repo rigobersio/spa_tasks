@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { getProfileRequest, updateProfileRequest } from '../api/auth';
 import ConfirmPasswordModal from '../components/ConfirmPasswordModal';
+import { toast } from 'react-toastify';
 
 const ProfilePage = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
-  const [message, setMessage] = useState('');
   const [profile, setProfile] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [updateData, setUpdateData] = useState(null);
@@ -21,9 +21,9 @@ const ProfilePage = () => {
       setProfile(res.data);
       setValue('username', res.data.username);
       setValue('email', res.data.email);
+      toast.success('Profile loaded successfully!');
     } catch (error) {
-      //console.error('Error al obtener el perfil:', error);
-      setMessage('Failed to load profile.');
+      toast.error('Failed to load profile.');
     }
   };
 
@@ -31,14 +31,13 @@ const ProfilePage = () => {
     if (isEditing) {
       try {
         await updateProfileRequest({ ...data, currentPassword: updateData });
-        setMessage('Profile updated successfully!');
+        toast.success('Profile updated successfully!');
         fetchProfile();
         setIsEditing(false);
         setShowConfirmModal(false);
         setUpdateData(null);
       } catch (error) {
-        //console.error('Error al actualizar el perfil:', error);
-        setMessage('Failed to update profile.');
+        toast.error('Failed to update profile.');
       }
     }
   };
@@ -62,8 +61,7 @@ const ProfilePage = () => {
       setShowConfirmModal(false); // Cerrar el modal de confirmación
       setUpdateData(password); // Guardar la contraseña para la actualización posterior
     } catch (error) {
-      //console.error('Error al confirmar la contraseña:', error);
-      
+      toast.error('Failed to confirm password.');
     }
   };
 
