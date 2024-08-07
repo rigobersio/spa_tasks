@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { loginRequest } from "../api/auth";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,16 +13,19 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       const res = await loginRequest(data);
-      console.log('Login response:', res);
+      //console.log('Login response:', res);
 
       if (res.status === 200) {
-        console.log('Login successful!');
+        //console.log('Login successful!');
         login();
+        toast.success('Login successful!');
       } else {
         console.error("Login failed");
+        toast.success('Login failed');
       }
     } catch (error) {
       console.log("Login error:", error);
+      toast.error('Login error');
     }
   };
 
