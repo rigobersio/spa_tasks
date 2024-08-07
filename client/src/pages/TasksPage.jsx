@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FcPlus } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
+
 import { createTaskRequest, getTasksRequest, getTaskRequest, updateTaskRequest, deleteTaskRequest } from '../api/tasks';
 import TaskModal from '../components/TaskModal';
 import CreateTaskModal from '../components/CreateTaskModal';
@@ -16,8 +18,10 @@ const TasksPage = () => {
     try {
       const res = await getTasksRequest();
       setTasks(res.data);
+      toast.success('Tasks fetched successfully!');
     } catch (error) {
-      console.error("Error al obtener las tareas:", error);
+      //console.error("Error al obtener las tareas:", error);
+      toast.error('Failed to fetch tasks.');
     }
   };
 

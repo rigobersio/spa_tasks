@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react';
 import { registerRequest } from "../api/auth";
-//import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -15,14 +15,14 @@ const RegisterPage = () => {
     try {
       const res = await registerRequest(data);
       if (res.status === 200) {
-        //toast.success(`User ${res.data.username} created successfully!`);
+        toast.success(`User ${res.data.username} created successfully!`);
         setUsernameCreated(true);
       } else {
-        //toast.error('Registration failed');
+        toast.error('Registration failed');
       }
     } catch (error) {
-      //toast.error('Registration error');
-      console.log("Registration error:", error);
+      toast.error('Registration error');
+      //console.log("Registration error:", error);
     }
   };
 
