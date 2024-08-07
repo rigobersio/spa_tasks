@@ -22,7 +22,7 @@ const ProfilePage = () => {
       setValue('username', res.data.username);
       setValue('email', res.data.email);
     } catch (error) {
-      console.error('Error al obtener el perfil:', error);
+      //console.error('Error al obtener el perfil:', error);
       setMessage('Failed to load profile.');
     }
   };
@@ -37,7 +37,7 @@ const ProfilePage = () => {
         setShowConfirmModal(false);
         setUpdateData(null);
       } catch (error) {
-        console.error('Error al actualizar el perfil:', error);
+        //console.error('Error al actualizar el perfil:', error);
         setMessage('Failed to update profile.');
       }
     }
@@ -62,8 +62,8 @@ const ProfilePage = () => {
       setShowConfirmModal(false); // Cerrar el modal de confirmación
       setUpdateData(password); // Guardar la contraseña para la actualización posterior
     } catch (error) {
-      console.error('Error al confirmar la contraseña:', error);
-      // Manejar el error según sea necesario (mostrar mensaje, etc.)
+      //console.error('Error al confirmar la contraseña:', error);
+      
     }
   };
 

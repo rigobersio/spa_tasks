@@ -1,11 +1,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const ConfirmPasswordModal = ({ onConfirm, onClose }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
     onConfirm(data.password);
+    toast.success('Password confirmed successfully!');
   };
 
   return (
