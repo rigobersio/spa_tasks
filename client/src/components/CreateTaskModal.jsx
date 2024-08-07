@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const CreateTaskModal = ({ onClose, onSubmit }) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -7,6 +8,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
   const handleFormSubmit = async (data) => {
     await onSubmit(data);
     reset();
+    toast.success('Task created successfully!');
   };
 
   return (

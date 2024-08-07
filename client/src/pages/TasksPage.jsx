@@ -9,7 +9,6 @@ import CreateTaskModal from '../components/CreateTaskModal';
 
 const TasksPage = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const [message, setMessage] = useState("");
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -18,9 +17,7 @@ const TasksPage = () => {
     try {
       const res = await getTasksRequest();
       setTasks(res.data);
-      toast.success('Tasks fetched successfully!');
     } catch (error) {
-      //console.error("Error al obtener las tareas:", error);
       toast.error('Failed to fetch tasks.');
     }
   };
@@ -31,16 +28,13 @@ const TasksPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Enviando datos:", data);
       const res = await createTaskRequest(data);
-      console.log("Respuesta del servidor:", res);
-      setMessage("Task created successfully!");
+      setTasks(prevTasks => [...prevTasks, res.data]);
+      toast.success('Task created successfully!');
       reset();
-      fetchTasks(); // Obtener las tareas nuevamente después de crear una nueva tarea
       setShowCreateModal(false); // Cerrar el modal después de crear una tarea
     } catch (error) {
-      console.error("Error al crear la tarea:", error);
-      setMessage("Failed to create task.");
+      toast.error('Failed to create task.');
     }
   };
 
@@ -49,7 +43,7 @@ const TasksPage = () => {
       const res = await getTaskRequest(taskId);
       setSelectedTask(res.data);
     } catch (error) {
-      console.error("Error al obtener la tarea:", error);
+      toast.error('Failed to fetch task details.');
     }
   };
 
@@ -60,24 +54,22 @@ const TasksPage = () => {
   const handleTaskUpdate = async (updatedTask) => {
     try {
       await updateTaskRequest(updatedTask._id, updatedTask);
-      setMessage("Task updated successfully!");
-      fetchTasks(); // Actualizar la lista de tareas
+      setTasks(prevTasks => prevTasks.map(task => (task._id === updatedTask._id ? updatedTask : task)));
+      toast.success('Task updated successfully!');
       setSelectedTask(null); // Cerrar el modal
     } catch (error) {
-      console.error("Error al actualizar la tarea:", error);
-      setMessage("Failed to update task.");
+      toast.error('Failed to update task.');
     }
   };
 
   const handleTaskDelete = async (taskId) => {
     try {
       await deleteTaskRequest(taskId);
-      setMessage("Task deleted successfully!");
-      fetchTasks(); // Actualizar la lista de tareas
+      setTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
+      toast.success('Task deleted successfully!');
       setSelectedTask(null); // Cerrar el modal
     } catch (error) {
-      console.error("Error al eliminar la tarea:", error);
-      setMessage("Failed to delete task.");
+      toast.error('Failed to delete task.');
     }
   };
 
@@ -111,7 +103,6 @@ const TasksPage = () => {
             <p className="text-lg mb-4">
               Now you're ready to start organizing your tasks! 🐾 📖.
             </p>
-
           </div>
           <div className="mt-6 w-full flex sm:flex-row flex-col sm:items-end items-center gap-3">
             <img
@@ -146,7 +137,6 @@ const TasksPage = () => {
             </div>
           </div>
         </div>
-
       </div>
 
       {selectedTask && (
