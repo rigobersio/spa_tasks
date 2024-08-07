@@ -27,12 +27,6 @@ app.use("/api", authRoutes);
 app.use("/api", taskRoutes);
 
 
-// Ruta catch-all para servir "index.html"(front) en cualquier otra ruta no gestionada por el backend
-/*
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-*/
 app.get('/', (req, res) => {
   res.status(200).send('SPA-Tasks API');
 });
