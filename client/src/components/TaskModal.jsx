@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       title: task.title,
       description: task.description,
-      date: task.date//.split('T')[0], // Ajustar formato de la fecha, puede dar problems ya que algunas tareas no tiene fecha
+      date: task.date
     }
   });
 
@@ -16,8 +17,10 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
     try {
       const updatedTask = { ...task, ...data };
       onUpdate(updatedTask);
+      toast.success('Task updated successfully!');
     } catch (error) {
       console.error("Error al actualizar la tarea:", error);
+      toast.error('Failed to update task.');
       setMessage("Failed to update task.");
     }
   };
@@ -58,7 +61,10 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
           </div>
           <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5">
             <button type="submit" className="bg-blue-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-blue-700 transition duration-300">Update Task</button>
-            <button type="button" className="bg-red-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-red-700 transition duration-300 ml-4" onClick={() => onDelete(task._id)}>Delete Task</button>
+            <button type="button" className="bg-red-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-red-700 transition duration-300 ml-4" onClick={() => {
+              onDelete(task._id);
+              toast.success('Task deleted successfully!');
+            }}>Delete Task</button>
             <button type="button" className="bg-gray-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-gray-700 transition duration-300 ml-4" onClick={onClose}>Cancel</button>
           </div>
         </form>
