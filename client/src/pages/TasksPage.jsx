@@ -95,7 +95,7 @@ const TasksPage = () => {
               Hello human! I'm an investigator of the mysteries of the canine universe 🎓🧠. My name is Canfeynman 🐕 and I'll be here to assist you with the 'Tasks' tool. You can relax and trust me, it's quite simple:
             </p>
             <ol className="mb-4 space-y-4">
-              <li>
+              <li className='flex'>
                 1. To add new tasks, simply click on the icon
                 <span className="Flex items-center">
                   <FcPlus className="text-4xl" />
