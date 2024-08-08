@@ -8,7 +8,7 @@ import authRoutes from "./routes/auth.routes.js";
 import taskRoutes from "./routes/tasks.routes.js";
 
 
-const URL = process.env.FRONTEND_URL
+const URL = process.env.FRONTEND_URL;
 const app = express();
 app.use(cors({
   origin: URL,
