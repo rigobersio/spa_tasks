@@ -27,11 +27,11 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-md w-1/2">
+      <div className="bg-white p-6 rounded-md w-full sm:w-1/2">
         <h2 className="text-2xl font-bold mb-4 text-center">Edit Task</h2>
         {message && <p className="text-2xl font-bold lg:my-12 my-3 text-center">{message}</p>}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col mx-6">
+          <div className="flex flex-col mx-1 sm:mx-6">
             <label htmlFor="title" className="text-lg font-medium">Title</label>
             <input
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
@@ -41,7 +41,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
             />
             {errors.title && <p className="text-red-600">Title is required</p>}
           </div>
-          <div className="flex flex-col mx-6">
+          <div className="flex flex-col mx-1 sm:mx-6">
             <label htmlFor="description" className="text-lg font-medium">Description</label>
             <input
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
@@ -51,7 +51,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
             />
             {errors.description && <p className="text-red-600">Description is required</p>}
           </div>
-          <div className="flex flex-col mx-6">
+          <div className="flex flex-col mx-1 sm:mx-6">
             <label htmlFor="date" className="text-lg font-medium">Date</label>
             <input
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
