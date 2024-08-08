@@ -26,16 +26,16 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
             />
             {errors.title && <p className="text-red-600">Title is required</p>}
           </div>
-          <div className="flex flex-col mx-6">
+          <div className="flex flex-col mx-1 sm:mx-6">
             <label htmlFor="description" className="text-lg font-medium">Description</label>
-            <input
-              className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
-              type="text"
+            <textarea
+              className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2 h-20 max-h-32 overflow-y-auto"
               placeholder="Description"
               {...register("description", { required: true })}
             />
             {errors.description && <p className="text-red-600">Description is required</p>}
           </div>
+
           <div className="flex flex-col mx-1 sm:mx-6">
             <label htmlFor="date" className="text-lg font-medium">Date</label>
             <input
