@@ -13,13 +13,13 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-md w-1/2">
+      <div className="bg-white p-6 rounded-md w-full sm:w-1/2">
         <h2 className="text-2xl font-bold mb-4 text-center">Create Task</h2>
         <form className="space-y-4" onSubmit={handleSubmit(handleFormSubmit)}>
-          <div className="flex flex-col mx-6">
+          <div className="flex flex-col mx-1 sm:mx-6">
             <label htmlFor="title" className="text-lg font-medium">Title</label>
             <input
-              className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
+              className="border border-gray-300 text-yellow-800 sm:px-4 px-1 py-2 rounded-md my-2"
               type="text"
               placeholder="Title"
               {...register("title", { required: true })}
@@ -36,7 +36,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
             />
             {errors.description && <p className="text-red-600">Description is required</p>}
           </div>
-          <div className="flex flex-col mx-6">
+          <div className="flex flex-col mx-1 sm:mx-6">
             <label htmlFor="date" className="text-lg font-medium">Date</label>
             <input
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
