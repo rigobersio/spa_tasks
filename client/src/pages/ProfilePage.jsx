@@ -52,7 +52,7 @@ const ProfilePage = () => {
   const onSubmit = async (data) => {
     try {
       console.log("Datos enviados:", data);
-      await updateProfileRequest({ ...data, currentPassword: "dummyPassword" }); // Simulación sin confirmación real
+      await updateProfileRequest({ ...data, currentPassword: "12341234" }); // Simulación sin confirmación real
       toast.success('Profile updated successfully!');
       fetchProfile();
     } catch (error) {
