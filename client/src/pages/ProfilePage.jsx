@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import { toast } from 'react-toastify';  // Comentado para simplificar la depuración
+import { toast } from 'react-toastify';
 import { getProfileRequest, updateProfileRequest } from '../api/auth';
 // import ConfirmPasswordModal from '../components/ConfirmPasswordModal';  // Comentado para simplificar la depuración
 
@@ -19,10 +19,10 @@ const ProfilePage = () => {
       setProfile(res.data);
       setValue('username', res.data.username);
       setValue('email', res.data.email);
-      // toast.success('Profile loaded successfully!');  // Comentado para simplificar la depuración
+      toast.success('Profile loaded successfully!');  // Comentado para simplificar la depuración
     } catch (error) {
       console.error("Error al cargar el perfil:", error);  // Agregado para depuración
-      // toast.error('Failed to load profile.');  // Comentado para simplificar la depuración
+      toast.error('Failed to load profile.');  // Comentado para simplificar la depuración
     }
   };
 
@@ -30,6 +30,7 @@ const ProfilePage = () => {
     fetchProfile();
   }, []);
 
+ /*
   const onSubmit = async (data) => {
     if (isEditing) {
       try {
@@ -47,6 +48,19 @@ const ProfilePage = () => {
       }
     }
   };
+  */
+  const onSubmit = async (data) => {
+    try {
+      console.log("Datos enviados:", data);
+      await updateProfileRequest({ ...data, currentPassword: "dummyPassword" }); // Simulación sin confirmación real
+      toast.success('Profile updated successfully!');
+      fetchProfile();
+    } catch (error) {
+      console.error("Error al actualizar el perfil:", error);
+      toast.error('Failed to update profile.');
+    }
+  };
+  
 
   const handleEdit = () => {
     setIsEditing(true);
