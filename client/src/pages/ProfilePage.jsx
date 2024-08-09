@@ -1,69 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';  // Comentado para simplificar la depuración
 import { getProfileRequest, updateProfileRequest } from '../api/auth';
-import ConfirmPasswordModal from '../components/ConfirmPasswordModal';
-
+// import ConfirmPasswordModal from '../components/ConfirmPasswordModal';  // Comentado para simplificar la depuración
 
 const ProfilePage = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [profile, setProfile] = useState(null);
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  // const [showConfirmModal, setShowConfirmModal] = useState(false);  // Comentado para simplificar la depuración
   const [updateData, setUpdateData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+
+  // Función asincrónica para obtener el perfil
+  const fetchProfile = async () => {
+    try {
+      const res = await getProfileRequest();
+      console.log("Perfil cargado: ", res.data);  // Agregado para depuración
+      setProfile(res.data);
+      setValue('username', res.data.username);
+      setValue('email', res.data.email);
+      // toast.success('Profile loaded successfully!');  // Comentado para simplificar la depuración
+    } catch (error) {
+      console.error("Error al cargar el perfil:", error);  // Agregado para depuración
+      // toast.error('Failed to load profile.');  // Comentado para simplificar la depuración
+    }
+  };
 
   useEffect(() => {
     fetchProfile();
   }, []);
 
-  const fetchProfile = async () => {
-    try {
-      const res = await getProfileRequest();
-      setProfile(res.data);
-      setValue('username', res.data.username);
-      setValue('email', res.data.email);
-      toast.success('Profile loaded successfully!');
-    } catch (error) {
-      toast.error('Failed to load profile.');
-    }
-  };
-
   const onSubmit = async (data) => {
     if (isEditing) {
       try {
-        await updateProfileRequest({ ...data, currentPassword: updateData });
-        toast.success('Profile updated successfully!');
+        console.log("Datos a actualizar: ", data);  // Agregado para depuración
+        const res = await updateProfileRequest({ ...data, currentPassword: updateData });
+        console.log("Perfil actualizado: ", res.data);  // Agregado para depuración
+        // toast.success('Profile updated successfully!');  // Comentado para simplificar la depuración
         fetchProfile();
         setIsEditing(false);
-        setShowConfirmModal(false);
+        // setShowConfirmModal(false);  // Comentado para simplificar la depuración
         setUpdateData(null);
       } catch (error) {
-        toast.error('Failed to update profile.');
+        console.error("Error al actualizar el perfil:", error);  // Agregado para depuración
+        // toast.error('Failed to update profile.');  // Comentado para simplificar la depuración
       }
     }
   };
 
   const handleEdit = () => {
-    setShowConfirmModal(true); // Mostrar modal de confirmación antes de permitir la edición
+    setIsEditing(true);
+    // setShowConfirmModal(true);  // Comentado para simplificar la depuración
   };
 
   const handleCancel = () => {
     setIsEditing(false);
     fetchProfile();
-    setShowConfirmModal(false); // Cerrar el modal de confirmación si está abierto
-    setUpdateData(null); // Limpiar los datos de actualización
-  };
-
-  const handleConfirm = async (password) => {
-    try {
-      // Verificar la contraseña antes de permitir la edición
-      await updateProfileRequest({ currentPassword: password });
-      setIsEditing(true);
-      setShowConfirmModal(false); // Cerrar el modal de confirmación
-      setUpdateData(password); // Guardar la contraseña para la actualización posterior
-    } catch (error) {
-      toast.error('Failed to confirm password.');
-    }
+    // setShowConfirmModal(false);  // Comentado para simplificar la depuración
+    setUpdateData(null);
   };
 
   return (
@@ -144,7 +138,6 @@ const ProfilePage = () => {
               </div>
             </form>
           )}
-          {!profile && <p className="text-center text-red-600">{message}</p>}
         </div>
         <div className="lg:pl-10 lg:pt-10 lg:w-[50%] w-[70%] flex flex-col items-center justify-center relative">
           <div className="bg-green-50 px-2 pt-6 pb-6 rounded-lg shadow-md text-green-900 w-full">
@@ -167,12 +160,12 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      {showConfirmModal && (
+      {/* {showConfirmModal && (
         <ConfirmPasswordModal
           onConfirm={handleConfirm}
           onClose={() => setShowConfirmModal(false)}
         />
-      )}
+      )} */}
     </div>
   );
 };
