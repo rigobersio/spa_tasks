@@ -8,7 +8,7 @@ import ConfirmPasswordModal from '../components/ConfirmPasswordModal';
 const ProfilePage = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [profile, setProfile] = useState(null);
-  const [showConfirmModal, setShowConfirmModal] = useState(false); 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [updateData, setUpdateData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -31,10 +31,11 @@ const ProfilePage = () => {
     fetchProfile();
   }, []);
 
- 
-const onSubmit = async (data) => {
-    if (isEditing) {
-      try {
+
+  const onSubmit = async (data) => {
+
+    try {
+      if (isEditing) {
         console.log("Datos a actualizar: ", data);  // Agregado para depuración
         const res = await updateProfileRequest({ ...data, currentPassword: updateData });
         console.log("Perfil actualizado: ", res.data);  // Agregado para depuración
@@ -43,10 +44,12 @@ const onSubmit = async (data) => {
         setIsEditing(false);
         setShowConfirmModal(false);
         setUpdateData(null);
-      } catch (error) {
-        console.error("Error al actualizar el perfil:", error);  // Agregado para depuración
-        toast.error('Failed to update profile.');
+      } else {
+        toast.error('Please confirm your password.');
       }
+    } catch (error) {
+      console.error("Error al actualizar el perfil:", error);  // Agregado para depuración
+      toast.error('Failed to update profile.');
     }
   };
 
@@ -62,7 +65,7 @@ const onSubmit = async (data) => {
       toast.error('Failed to confirm password.');
     }
   };
-  
+
 
   const handleEdit = () => {
     setIsEditing(true);
