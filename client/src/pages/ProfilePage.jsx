@@ -68,7 +68,7 @@ const ProfilePage = () => {
 
 
   const handleEdit = () => {
-    setIsEditing(true);
+    //setIsEditing(true);
     setShowConfirmModal(true);
   };
   const handleCancel = () => {
