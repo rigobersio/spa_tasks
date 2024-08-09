@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { getProfileRequest, updateProfileRequest } from '../api/auth';
-// import ConfirmPasswordModal from '../components/ConfirmPasswordModal';  // Comentado para simplificar la depuración
+import ConfirmPasswordModal from '../components/ConfirmPasswordModal';
+
 
 const ProfilePage = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [profile, setProfile] = useState(null);
-  // const [showConfirmModal, setShowConfirmModal] = useState(false);  // Comentado para simplificar la depuración
+  const [showConfirmModal, setShowConfirmModal] = useState(false); 
   const [updateData, setUpdateData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -19,10 +20,10 @@ const ProfilePage = () => {
       setProfile(res.data);
       setValue('username', res.data.username);
       setValue('email', res.data.email);
-      toast.success('Profile loaded successfully!');  // Comentado para simplificar la depuración
+      toast.success('Profile loaded successfully!');
     } catch (error) {
       console.error("Error al cargar el perfil:", error);  // Agregado para depuración
-      toast.error('Failed to load profile.');  // Comentado para simplificar la depuración
+      toast.error('Failed to load profile.');
     }
   };
 
@@ -30,47 +31,47 @@ const ProfilePage = () => {
     fetchProfile();
   }, []);
 
- /*
-  const onSubmit = async (data) => {
+ 
+const onSubmit = async (data) => {
     if (isEditing) {
       try {
         console.log("Datos a actualizar: ", data);  // Agregado para depuración
         const res = await updateProfileRequest({ ...data, currentPassword: updateData });
         console.log("Perfil actualizado: ", res.data);  // Agregado para depuración
-        // toast.success('Profile updated successfully!');  // Comentado para simplificar la depuración
+        toast.success('Profile updated successfully!');
         fetchProfile();
         setIsEditing(false);
-        // setShowConfirmModal(false);  // Comentado para simplificar la depuración
+        setShowConfirmModal(false);
         setUpdateData(null);
       } catch (error) {
         console.error("Error al actualizar el perfil:", error);  // Agregado para depuración
-        // toast.error('Failed to update profile.');  // Comentado para simplificar la depuración
+        toast.error('Failed to update profile.');
       }
     }
   };
-  */
-  const onSubmit = async (data) => {
+
+  const handleConfirm = async (password) => {
     try {
-      console.log("Datos enviados:", data);
-      await updateProfileRequest({ ...data, currentPassword: "12341234" }); // Simulación sin confirmación real
-      toast.success('Profile updated successfully!');
-      fetchProfile();
+      await updateProfileRequest({ currentPassword: password });
+      setIsEditing(true);
+      setShowConfirmModal(false);
+      setUpdateData(password); // Guardar la contraseña confirmada para la actualización posterior
+      toast.success('Password confirmed successfully!');
     } catch (error) {
-      console.error("Error al actualizar el perfil:", error);
-      toast.error('Failed to update profile.');
+      console.error("Error al confirmar la contraseña:", error);
+      toast.error('Failed to confirm password.');
     }
   };
   
 
   const handleEdit = () => {
     setIsEditing(true);
-    // setShowConfirmModal(true);  // Comentado para simplificar la depuración
+    setShowConfirmModal(true);
   };
-
   const handleCancel = () => {
     setIsEditing(false);
     fetchProfile();
-    // setShowConfirmModal(false);  // Comentado para simplificar la depuración
+    setShowConfirmModal(false);
     setUpdateData(null);
   };
 
@@ -174,12 +175,12 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      {/* {showConfirmModal && (
+      {showConfirmModal && (
         <ConfirmPasswordModal
           onConfirm={handleConfirm}
           onClose={() => setShowConfirmModal(false)}
         />
-      )} */}
+      )}
     </div>
   );
 };
