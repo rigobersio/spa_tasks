@@ -80,8 +80,12 @@ const LoginPage = () => {
               {errors.password && <p className="text-red-600">{errors.password.message}</p>}
             </div>
             <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5">
-              <button type="submit" className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300">
-                Login
+              <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300"
+              >
+                {isSubmitting ? 'Logging in...' : 'Login'}
               </button>
             </div>
           </form>
