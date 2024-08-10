@@ -16,7 +16,7 @@ const ProfilePage = () => {
   const fetchProfile = async () => {
     try {
       const res = await getProfileRequest();
-      console.log("Perfil cargado: ", res.data);  // Agregado para depuración
+      //console.log("Perfil cargado: ", res.data);  // Agregado para depuración
       setProfile(res.data);
       setValue('username', res.data.username);
       setValue('email', res.data.email);
@@ -36,9 +36,9 @@ const ProfilePage = () => {
 
     try {
       if (isEditing) {
-        console.log("Datos a actualizar: ", data);  // Agregado para depuración
+        //console.log("Datos a actualizar: ", data);  // Agregado para depuración
         const res = await updateProfileRequest({ ...data, currentPassword: updateData });
-        console.log("Perfil actualizado: ", res.data);  // Agregado para depuración
+        //console.log("Perfil actualizado: ", res.data);  // Agregado para depuración
         toast.success('Profile updated successfully!');
         fetchProfile();
         setIsEditing(false);
@@ -68,7 +68,6 @@ const ProfilePage = () => {
 
 
   const handleEdit = () => {
-    //setIsEditing(true);
     setShowConfirmModal(true);
   };
   const handleCancel = () => {
