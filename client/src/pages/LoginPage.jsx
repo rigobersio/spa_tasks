@@ -34,6 +34,7 @@ const LoginPage = () => {
     } catch (error) {
       console.log("Login error:", error);
       toast.error('Login error');
+      window.location.reload();
     }
   };
 
