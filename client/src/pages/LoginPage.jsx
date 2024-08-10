@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -9,10 +9,14 @@ import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true); // Desactivar el botón
+    toast.info('Logging in, please wait...'); // Mostrar alerta de que el proceso está en curso
+
     try {
       const res = await loginRequest(data);
       //console.log('Login response:', res);
@@ -20,8 +24,10 @@ const LoginPage = () => {
       if (res.status === 200) {
         //console.log('Login successful!');
         login();
+        toast.dismiss(); // Descartar la alerta en curso
         toast.success('Login successful!');
       } else {
+        toast.dismiss(); // Descartar la alerta en curso
         console.error("Login failed");
         toast.success('Login failed');
       }
