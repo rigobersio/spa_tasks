@@ -32,8 +32,10 @@ const LoginPage = () => {
         toast.success('Login failed');
       }
     } catch (error) {
+      toast.dismiss(); // Descartar la alerta en curso
       console.log("Login error:", error);
       toast.error('Login error');
+      toast.info('The page reloads')
       window.location.reload();
     }
   };
@@ -86,7 +88,7 @@ const LoginPage = () => {
               disabled={isSubmitting}
               className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300"
               >
-                {isSubmitting ? 'Logging in...' : 'Login'}
+                {isSubmitting ? 'Logging in...' : <strong>Login</strong>}
               </button>
             </div>
           </form>

@@ -10,21 +10,31 @@ import { registerRequest } from "../api/auth";
 const RegisterPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [usernameCreated, setUsernameCreated] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true); // Desactivar el botón
+    toast.info('Registering, please wait...'); // Mostrar alerta de que el proceso está en curso
+
     try {
       const res = await registerRequest(data);
       if (res.status === 200) {
+        toast.dismiss(); // Descartar la alerta en curso
         toast.success(`User ${res.data.username} created successfully!`);
         setUsernameCreated(true);
       } else {
+        toast.dismiss(); // Descartar la alerta en curso
+        //console.error("Registration failed");
         toast.error('Registration failed');
       }
     } catch (error) {
+      toast.dismiss(); // Descartar la alerta en curso
       toast.error('Registration error');
       //console.log("Registration error:", error);
+      toast.info('The page reloads')
+      window.location.reload();
     }
   };
 
@@ -80,8 +90,12 @@ const RegisterPage = () => {
               {errors.password && <p className="text-red-600">{errors.password.message}</p>}
             </div>
             <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5">
-              <button type="submit" className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300">
-                <strong>Register</strong>
+              <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300"
+              >
+                {isSubmitting ? 'Registering...' : <strong>Register</strong>}
               </button>
             </div>
           </form>
