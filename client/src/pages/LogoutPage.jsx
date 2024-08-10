@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -7,18 +7,25 @@ import { useAuth } from '../context/AuthContext';
 
 
 const LogoutPage = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
+    setIsSubmitting(true); // Desactivar el botón
+    toast.info('Logging out, please wait...'); // Mostrar alerta de que el proceso está en curso
+    
     try {
       await logoutRequest();
       logout();
+      toast.dismiss(); // Descartar la alerta en curso
       toast.success("Logout successful!");
       navigate("/");
     } catch (error) {
       //console.log("Logout error:", error);
+      toast.dismiss(); // Descartar la alerta en curso
       toast.error("Logout error");
+      windows.location.reload();
     }
   };
 
@@ -31,14 +38,15 @@ const LogoutPage = () => {
         </p>
       </div>
       <div className="flex flex-col lg:flex-row justify-center items-center lg:px-14 py-12 w-full gap-20">
-        <div className="lg:ml-10 m-3 lg:w-[40%] md:w-[50%] w-[70%] border-2 border-solid border-fuchsia-600 bg-[#5D9C59] text-white rounded-md">
+        <div className="lg:ml-10 m-3 lg:w-[35%] md:w-[50%] w-[70%] lg:h-max-[20%] border-2 border-solid border-fuchsia-600 bg-[#5D9C59] text-white rounded-md">
           <h2 className="text-2xl font-bold lg:my-12 my-3 text-center">Logout</h2>
           <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5">
             <button
               onClick={handleLogout}
+              disabled={isSubmitting}
               className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300"
             >
-              Logout
+              {isSubmitting ? 'Logging out...' : <strong>Logout</strong>}
             </button>
           </div>
         </div>
