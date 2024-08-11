@@ -38,9 +38,9 @@ const LogoutPage = () => {
         </p>
       </div>
       <div className="flex flex-col lg:flex-row justify-center items-center lg:px-14 py-12 w-full gap-20">
-        <div className="lg:ml-10 m-3 w-[70%] sm:w-[50%] md:w-[20%] md:h-[8%] border-2 border-solid border-fuchsia-600 bg-[#5D9C59] text-white rounded-md">
+        <div className="lg:ml-10 m-3 w-[70%] sm:w-[50%] lg:w-[25%] md:h-[8%] border-2 border-solid border-fuchsia-600 bg-[#5D9C59] text-white rounded-md">
           <h2 className="text-2xl font-bold lg:my-12 my-3 text-center">Logout</h2>
-          <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5">
+          <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5 lg:mb-2">
             <button
               onClick={handleLogout}
               disabled={isSubmitting}
