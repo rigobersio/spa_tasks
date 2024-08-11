@@ -8,6 +8,7 @@ import ConfirmPasswordModal from '../components/ConfirmPasswordModal';
 const ProfilePage = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [profile, setProfile] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [updateData, setUpdateData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -33,23 +34,29 @@ const ProfilePage = () => {
 
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true); // Desactivar el botón
+    toast.info('Updating profile, please wait...'); // Mostrar alerta de que el proceso está en curso
 
     try {
       if (isEditing) {
         //console.log("Datos a actualizar: ", data);  // Agregado para depuración
         const res = await updateProfileRequest({ ...data, currentPassword: updateData });
         //console.log("Perfil actualizado: ", res.data);  // Agregado para depuración
+        toast.dismiss(); // Descartar la alerta en curso
         toast.success('Profile updated successfully!');
         fetchProfile();
         setIsEditing(false);
         setShowConfirmModal(false);
         setUpdateData(null);
       } else {
+        toast.dismiss(); // Descartar la alerta en curso
         toast.error('Please confirm your password.');
       }
     } catch (error) {
+      toast.dismiss(); // Descartar la alerta en curso
       console.error("Error al actualizar el perfil:", error);  // Agregado para depuración
       toast.error('Failed to update profile.');
+      setIsSubmitting(false);
     }
   };
 
@@ -139,9 +146,10 @@ const ProfilePage = () => {
                   <>
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300 mr-4"
                     >
-                      <strong>Update Profile</strong>
+                      {setIsSubmitting ? "Save Changes" : <strong>Update Profile</strong>}
                     </button>
                     <button
                       type="button"
