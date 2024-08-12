@@ -65,7 +65,7 @@ const NavBar = () => {
           </button>
         </div>
         </div>
-        <div className="lg:flex items center justify-end font-normal hidden text-2xl mr-5">
+        <div className="lg:flex items center justify-end font-normal hidden text-2xl ml-5">
           <div className="flex">
             <ul className="flex gap-8 text-[18]">
               <LinkRouter to="/">
