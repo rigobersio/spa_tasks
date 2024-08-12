@@ -74,7 +74,7 @@ const LogoutPage = () => {
             </p>
             <ol className="mb-4 space-y-4">
               <li>{castelian ? '1. Toca o haz click en el botón "Cerrar sesión"' : '1. Tap or click on the "Logout" button'}</li>
-              <li>{castelian ? "2. Ahora solo tienes que esperar ya que el proceso ocurre en automágico 🚗🪄" : "2. Wait for the magic to happen 🚀✨"}</li>
+              <li>{castelian ? "2. Ahora solo tienes que esperar porque el proceso ocurre en automágico 🚗🪄" : "2. Wait for the magic to happen 🚀✨"}</li>
             </ol>
             <p className="text-lg mb-4">
               {
