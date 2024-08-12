@@ -22,27 +22,27 @@ const NavBar = () => {
   const content = (
     <div className="lg:hidden block absolute top-16 w-full left-0 right-0 bg-[#5D9C59] text-yellow-50 transition">
       <ul className="text-center text-xl p-1">
-        <LinkRouter to="/">
+        <LinkRouter to="/" onClick={handleClick}>
           <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">SPA-Tasks</li>
         </LinkRouter>
-        <LinkRouter to="/tasks">
+        <LinkRouter to="/tasks" onClick={handleClick}>
           <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Tareas' : 'Tasks'}</li>
         </LinkRouter>
         {!isAuthenticated ? (
           <>
-            <LinkRouter to="/register">
+            <LinkRouter to="/register" onClick={handleClick}>
               <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Registro' : 'Register'}</li>
             </LinkRouter>
-            <LinkRouter to="/login">
+            <LinkRouter to="/login" onClick={handleClick}>
               <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Iniciar Sesión' : 'Login'}</li>
             </LinkRouter>
           </>
         ) : (
           <>
-            <LinkRouter to="/profile">
+            <LinkRouter to="/profile" onClick={handleClick}>
               <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Mi perfil' : 'Profile'}</li>
             </LinkRouter>
-            <LinkRouter to="/logout">
+            <LinkRouter to="/logout" onClick={handleClick}>
               <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Cerrar sesión' : 'Logout'}</li>
             </LinkRouter>
           </>
@@ -54,9 +54,9 @@ const NavBar = () => {
   return (
     <nav>
       <div className="h-10vh flex justify-between z-50 bg-[#5D9C59] text-yellow-50 lg:py-5 px-20 py-4">
-        <div className="flex items-center flex-1">
-          <span className="text-3xl font-bold"><MdOutlineAddReaction /></span>
-          <div className="lg:hidden flex items-center ml-4 space-x-4">
+        <div className="flex items-center">
+          <span className="text-3xl font-bold mr-3 lg:mr-0"><MdOutlineAddReaction /></span>
+          <div className="lg:hidden flex items-center ml-3 space-x-4">
           <button onClick={() => changeLanguage(true)} className="w-8 h-8">
             <img src="/flag-chile.svg" alt="Chile Flag" className="w-full h-full object-cover" />
           </button>
