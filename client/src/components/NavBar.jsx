@@ -65,9 +65,9 @@ const NavBar = () => {
           </button>
         </div>
         </div>
-        <div className="lg:flex items center justify-end font-normal hidden text-2xl pl-5">
-          <div className="flex pl-2">
-            <ul className="flex gap-8 text-[18]">
+        <div className="lg:flex items center justify-end font-normal hidden text-2xl">
+          <div className="flex">
+            <ul className="flex gap-8 text-[18] pl-5">
               <LinkRouter to="/">
                 <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">SPA-Tasks</li>
               </LinkRouter>
