@@ -21,8 +21,6 @@ export const LanguageProvider = ({ children }) => {
   // Cambia el idioma y guarda la selección en sessionStorage
   const changeLanguage = (isCastelian) => {
     setCastelian(isCastelian);
-    console.log("castelian: ", isCastelian);
-    toast.success('castelian: ', isCastelian);
     sessionStorage.setItem('language', isCastelian ? 'castelian' : 'english');
   };
 
