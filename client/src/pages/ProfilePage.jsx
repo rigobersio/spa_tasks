@@ -157,9 +157,9 @@ const ProfilePage = () => {
                       className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300 mr-4"
                     >
                       {setIsSubmitting ?
-                      (castelian ? 'Actualizando perfil ...' : 'Updating profile...')
+                      (castelian ? "Actualizar Perfil" : "Update Profile")
                       :
-                      <strong>{castelian ? "Actualizar Perfil" : "Update Profile"}</strong>}
+                      <strong>{castelian ? 'Actualizando perfil ...' : 'Updating profile...'}</strong>}
                     </button>
                     <button
                       type="button"
