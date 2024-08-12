@@ -23,27 +23,27 @@ const NavBar = () => {
     <div className="lg:hidden block absolute top-16 w-full left-0 right-0 bg-[#5D9C59] text-yellow-50 transition">
       <ul className="text-center text-xl p-1">
         <LinkRouter to="/">
-          <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">Home</li>
+          <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">SPA-Tasks</li>
         </LinkRouter>
         <LinkRouter to="/tasks">
-          <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">Tasks</li>
+          <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Tareas' : 'Tasks'}</li>
         </LinkRouter>
         {!isAuthenticated ? (
           <>
             <LinkRouter to="/register">
-              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">Register</li>
+              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Registro' : 'Register'}</li>
             </LinkRouter>
             <LinkRouter to="/login">
-              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">Login</li>
+              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Iniciar Sesión' : 'Login'}</li>
             </LinkRouter>
           </>
         ) : (
           <>
             <LinkRouter to="/profile">
-              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">Profile</li>
+              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Mi perfil' : 'Profile'}</li>
             </LinkRouter>
             <LinkRouter to="/logout">
-              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">Logout</li>
+              <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">{castelian ? 'Cerrar sesión' : 'Logout'}</li>
             </LinkRouter>
           </>
         )}
@@ -56,6 +56,14 @@ const NavBar = () => {
       <div className="h-10vh flex justify-between z-50 bg-[#5D9C59] text-yellow-50 lg:py-5 px-20 py-4">
         <div className="flex items-center flex-1">
           <span className="text-3xl font-bold"><MdOutlineAddReaction /></span>
+          <div className="lg:hidden flex items-center space-x-4">
+          <button onClick={() => changeLanguage(true)} className="w-8 h-8">
+            <img src="/flag-chile.svg" alt="Chile Flag" className="w-full h-full object-cover" />
+          </button>
+          <button onClick={() => changeLanguage(false)} className="w-8 h-8">
+            <img src="/flag-united-kingdom.svg" alt="UK Flag" className="w-full h-full object-cover" />
+          </button>
+        </div>
         </div>
         <div className="lg:flex md:flex items center justify-end font-normal hidden text-2xl ">
           <div className="flex-10">
@@ -64,7 +72,7 @@ const NavBar = () => {
                 <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">SPA-Tasks</li>
               </LinkRouter>
               <LinkRouter to="/tasks">
-                <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Tasks</li>
+                <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">{castelian ? 'Tareas' : 'Tasks'}</li>
               </LinkRouter>
               {!isAuthenticated ? (
                 <>
@@ -72,16 +80,16 @@ const NavBar = () => {
                     <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">{castelian ? 'Registro' : 'Register'}</li>
                   </LinkRouter>
                   <LinkRouter to="/login">
-                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Login</li>
+                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">{castelian ? 'Iniciar Sesión' : 'Login'}</li>
                   </LinkRouter>
                 </>
               ) : (
                 <>
                   <LinkRouter to="/profile">
-                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Profile</li>
+                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">{castelian ? 'Mi perfil' : 'Profile'}</li>
                   </LinkRouter>
                   <LinkRouter to="/logout">
-                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Logout</li>
+                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">{castelian ? 'Cerrar sesión' : 'Logout'}</li>
                   </LinkRouter>
                 </>
               )}
