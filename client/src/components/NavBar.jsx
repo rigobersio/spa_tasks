@@ -105,7 +105,7 @@ const NavBar = () => {
           </button>
         </div>
         <div>{click && content}</div>
-        <button className="block lg:hidden transition" onClick={handleClick}>{click ? <FaTimes /> : <CiMenuFries />}</button>
+        <button className="block lg:hidden transition pr-4" onClick={handleClick}>{click ? <FaTimes /> : <CiMenuFries />}</button>
       </div>
     </nav>
   );
