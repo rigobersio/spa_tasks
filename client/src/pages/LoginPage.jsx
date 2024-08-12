@@ -91,7 +91,7 @@ const LoginPage = () => {
               disabled={isSubmitting}
               className="bg-white text-[#5D9C59] lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-100 transition duration-300"
               >
-                {isSubmitting ? {castelian ? "Iniciando sesión..." : "Logging in..."} : <strong>{castelian ? 'Iniciar sesión' : 'Login'}</strong>}
+                {isSubmitting ? (castelian ? "Iniciando sesión..." : "Logging in...") : <strong>{castelian ? 'Iniciar sesión' : 'Login'}</strong>}
               </button>
             </div>
           </form>
