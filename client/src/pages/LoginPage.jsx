@@ -69,7 +69,7 @@ const LoginPage = () => {
                 id="email"
                 type="email"
                 className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
-                placeholder={castelian ? 'Correo electrónico' : 'Email'}
+                placeholder={castelian ? 'correo@ejemplo.com' : 'email@example.com'}
                 {...register("email", { required: "The email is required" })}
               />
               {errors.email && <p className="text-red-600">{errors.email.message}</p>}
