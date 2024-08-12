@@ -154,6 +154,7 @@ const ProfilePage = () => {
                     <button
                       type="button"
                       onClick={handleCancel}
+                      disabled={isSubmitting}
                       className="bg-gray-500 text-white lg:py-4 py-2 px-12 rounded-md shadow-md hover:bg-gray-600 transition duration-300"
                     >
                       <strong>Cancel</strong>

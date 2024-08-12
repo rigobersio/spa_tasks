@@ -5,10 +5,12 @@ import { FaTimes } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
 import { MdOutlineAddReaction } from "react-icons/md";
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
   const { isAuthenticated, logout } = useAuth();
+  const { castelian, changeLanguage } = useLanguage();
 
   const handleClick = () => setClick(!click);
 
@@ -59,7 +61,7 @@ const NavBar = () => {
           <div className="flex-10">
             <ul className="flex gap-8 mr-16 text-[18]">
               <LinkRouter to="/">
-                <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Home</li>
+                <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">SPA-Tasks</li>
               </LinkRouter>
               <LinkRouter to="/tasks">
                 <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Tasks</li>
@@ -67,7 +69,7 @@ const NavBar = () => {
               {!isAuthenticated ? (
                 <>
                   <LinkRouter to="/register">
-                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Register</li>
+                    <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">{castelian ? 'Registro' : 'Register'}</li>
                   </LinkRouter>
                   <LinkRouter to="/login">
                     <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">Login</li>
@@ -85,6 +87,14 @@ const NavBar = () => {
               )}
             </ul>
           </div>
+        </div>
+        <div className="hidden lg:flex items-center space-x-4">
+          <button onClick={() => changeLanguage(true)} className="w-8 h-8">
+            <img src="/flag-chile.svg" alt="Chile Flag" className="w-full h-full object-cover" />
+          </button>
+          <button onClick={() => changeLanguage(false)} className="w-8 h-8">
+            <img src="/flag-united-kingdom.svg" alt="UK Flag" className="w-full h-full object-cover" />
+          </button>
         </div>
         <div>{click && content}</div>
         <button className="block sm:hidden transition" onClick={handleClick}>{click ? <FaTimes /> : <CiMenuFries />}</button>
