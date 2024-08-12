@@ -20,7 +20,7 @@ const NavBar = () => {
   };
 
   const content = (
-    <div className="lg:hidden block absolute top-16 w-full left-0 right-0 bg-[#5D9C59] text-yellow-50 transition">
+    <div className="md:hidden block absolute top-16 w-full left-0 right-0 bg-[#5D9C59] text-yellow-50 transition">
       <ul className="text-center text-xl p-1">
         <LinkRouter to="/" onClick={handleClick}>
           <li className="my-4 py-4 border-slate-400 hover:bg-slate-400 hover:rounded">SPA-Tasks</li>
@@ -55,8 +55,8 @@ const NavBar = () => {
     <nav>
       <div className="h-10vh flex justify-between z-50 bg-[#5D9C59] text-yellow-50 lg:py-5 px-20 py-4">
         <div className="flex items-center">
-          <span className="text-3xl font-bold mr-3 lg:mr-0"><MdOutlineAddReaction /></span>
-          <div className="lg:hidden flex items-center ml-3 space-x-4">
+          <span className="text-3xl font-bold mr-3 md:mr-0"><MdOutlineAddReaction /></span>
+          <div className="md:hidden flex items-center ml-3 space-x-4">
           <button onClick={() => changeLanguage(true)} className="w-8 h-8">
             <img src="/flag-chile.svg" alt="Chile Flag" className="w-full h-full object-cover" />
           </button>
@@ -65,7 +65,7 @@ const NavBar = () => {
           </button>
         </div>
         </div>
-        <div className="lg:flex md:flex items center justify-end font-normal hidden text-2xl ">
+        <div className="md:flex items center justify-end font-normal hidden text-2xl ">
           <div className="flex-10">
             <ul className="flex gap-8 mr-16 text-[18]">
               <LinkRouter to="/">
@@ -96,7 +96,7 @@ const NavBar = () => {
             </ul>
           </div>
         </div>
-        <div className="hidden lg:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
           <button onClick={() => changeLanguage(true)} className="w-8 h-8">
             <img src="/flag-chile.svg" alt="Chile Flag" className="w-full h-full object-cover" />
           </button>
