@@ -53,7 +53,7 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div className="h-10vh flex justify-between z-50 bg-[#5D9C59] text-yellow-50 lg:py-5 pl-20 pr-10 py-4">
+      <div className="h-10vh flex justify-between z-50 bg-[#5D9C59] text-yellow-50 lg:py-5 pl-20 pr-3 py-4">
         <div className="flex items-center">
           <span className="text-3xl font-bold mr-3 lg:mr-0"><MdOutlineAddReaction /></span>
           <div className="lg:hidden flex items-center ml-3 space-x-4">
@@ -66,7 +66,7 @@ const NavBar = () => {
         </div>
         </div>
         <div className="lg:flex items center justify-end font-normal hidden text-2xl ">
-          <div className="flex  mr-8">
+          <div className="flex  mr-2">
             <ul className="flex gap-8 text-[18]">
               <LinkRouter to="/">
                 <li className="hover:text-fuchsia-600 transition border-b-2 border-slate-900 hover:border-fuchsia-600 cursor-pointer">SPA-Tasks</li>
