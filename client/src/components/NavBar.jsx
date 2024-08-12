@@ -56,7 +56,7 @@ const NavBar = () => {
       <div className="h-10vh flex justify-between z-50 bg-[#5D9C59] text-yellow-50 lg:py-5 px-20 py-4">
         <div className="flex items-center flex-1">
           <span className="text-3xl font-bold"><MdOutlineAddReaction /></span>
-          <div className="lg:hidden flex items-center space-x-4">
+          <div className="lg:hidden flex items-center ml-4 space-x-4">
           <button onClick={() => changeLanguage(true)} className="w-8 h-8">
             <img src="/flag-chile.svg" alt="Chile Flag" className="w-full h-full object-cover" />
           </button>
