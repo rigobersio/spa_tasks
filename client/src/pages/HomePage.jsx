@@ -22,7 +22,7 @@ const HomePage = () => {
         <div className="lg:ml-10 m-3 lg:w-[40%] md:w-[50%] w-[70%] border-2 border-solid border-fuchsia-600 bg-[#5D9C59] text-white rounded-md">
           <h2 className="text-2xl font-bold lg:my-12 my-3 text-center">{castelian ? "Ventajas de usar una lista de tareas 📝✨" : "Advantages of Using a Task List 📝✨"}</h2>
           <div className="p-6">
-            <h3 className="text-xl font-semibold mb-4">{castelian ? "1. Puedes mantener una buena organización 📂" : "1. Stay Organized 📂"}</h3>
+            <h3 className="text-xl font-semibold mb-4">{castelian ? "1. Buena organización 📂" : "1. Stay Organized 📂"}</h3>
             <p className="mb-4">
               {
                 castelian ?
@@ -45,9 +45,9 @@ const HomePage = () => {
             <p className="mb-4">
               {
                 castelian ?
-                "Siéntete más en control y menos preocupado al saber exactamente qué debes hacer y cuándo. ¡Tranquilo y sereno! 🌿"
+                "Siéntete más en control y menos preocupado al saber exactamente qué debes hacer y cuándo. ¡Tranquilo y sereno! 😌"
                 :
-                "Feel more in control and less worried by knowing exactly what needs to be done and when. Calm and collected! 🌿"
+                "Feel more in control and less worried by knowing exactly what needs to be done and when. Calm and collected! 😌"
               }
             </p>
           </div>
