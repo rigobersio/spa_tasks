@@ -52,7 +52,7 @@ const LoginPage = () => {
   }, [isAuthenticated, navigate]);
   
   return (
-    <div>
+    <div className='text-justify'>
       <div className="bg-green-50 text-green-900 p-6 sm:mx-0 mx-[5%] rounded-lg shadow-md">
         <h1 className="text-3xl font-bold mt-4 mb-5">{castelian ? "Bienvenido a la SPA-Tareas 📝" : "Welcome to the SPA-Tasks Login! 📝"}</h1>
         <p className="text-lg mb-5">
@@ -104,9 +104,9 @@ const LoginPage = () => {
             <h2 className="text-2xl font-bold mb-4 text-center">{castelian ? 'Inicia rápidamente con la ayuda de Apo 11 🚀🐶' : 'Quick start with the help of Apo 11 🚀🐶'}</h2>
             <p className="text-lg mb-4">
               {castelian ? 
-              "¡Hola, humano! Soy Apo 11 🚀🐶, un perro muy relajado 🚀🐶 que está aquí para ayudarte a iniciar sesión. Solo sigue estos pasos:"
+              "¡Hola, humano! Soy Apo 11 🚀🐶, un perro muy relajado que está aquí para ayudarte a iniciar sesión. Solo sigue estos pasos:"
               :
-              "Hey human! I'm Apo 11 🚀🐶, a super chill dog 🚀🐶 here to help you log in. Just follow these steps:"
+              "Hey human! I'm Apo 11 🚀🐶, a super chill dog here to help you log in. Just follow these steps:"
               }
             </p>
             <ol className="mb-4 space-y-4">
@@ -132,9 +132,9 @@ const LoginPage = () => {
               <p className="text-lg">
                 {
                   castelian ?
-                  "Ahora, con la misma onda: 'Hola, soy yo otra vez, Apo 11 🚀🐶. Si tienes problemas con la autenticación, pídele ayuda a cualquier perro de confianza. Y, hagas lo que hagas, mantente alejado de esos gatos piratas de la web. 🐾"
+                  "Ahora, con la misma onda: 'Si tienes problemas con la autenticación, pídele ayuda a cualquier perro de confianza. Y, hagas lo que hagas, mantente alejado de esos gatos piratas de la web. 🐾"
                   :
-                  "Now, with the same vibe: 'Hey, it's me again, Apo 11 🚀🐶. If you're having trouble with authentication, ask any trusted dog for help. And whatever you do, steer clear of those web pirate cats. 🐾"
+                  "Now, with the same vibe: 'If you're having trouble with authentication, ask any trusted dog for help. And whatever you do, steer clear of those web pirate cats. 🐾"
                 }
               </p>
             </div>

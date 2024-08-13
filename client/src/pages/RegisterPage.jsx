@@ -47,7 +47,7 @@ const RegisterPage = () => {
   }, [isAuthenticated, usernameCreated, navigate]);
 
   return (
-    <div>
+    <div className="text-justify">
       <div className="bg-green-50 text-green-900 p-6 sm:mx-0 mx-[5%] rounded-lg shadow-md">
         <h1 className="text-3xl font-bold mt-4 mb-5">{castelian ? "Bienvenido acá te puedes registrarte en SPA-Tareas 📝" : "Welcome to the SPA-Tasks Register! 📝"}</h1>
         <p className="text-lg mb-5">

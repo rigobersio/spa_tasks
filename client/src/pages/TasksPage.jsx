@@ -76,7 +76,7 @@ const TasksPage = () => {
   };
 
   return (
-    <div>
+    <div className='text-justify'>
       <div className="bg-green-50 text-green-900 p-6 sm:mx-0 mx-[5%] rounded-lg shadow-md">
         <div className='flex flex-row items-center justify-between w-full pb-5'>
           <h1 className="text-3xl font-bold mt-4 mb-5">{castelian ? "¡Bienvenidos, aquí están sus tareas! 📝" : "Welcome here are your tasks! 📝"}</h1>
