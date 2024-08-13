@@ -52,7 +52,7 @@ const LoginPage = () => {
   }, [isAuthenticated, navigate]);
   
   return (
-    <div>
+    <div className='text-justify'>
       <div className="bg-green-50 text-green-900 p-6 sm:mx-0 mx-[5%] rounded-lg shadow-md">
         <h1 className="text-3xl font-bold mt-4 mb-5">{castelian ? "Bienvenido a la SPA-Tareas 📝" : "Welcome to the SPA-Tasks Login! 📝"}</h1>
         <p className="text-lg mb-5">
