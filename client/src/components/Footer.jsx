@@ -1,7 +1,11 @@
 import React from "react";
 import { FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { CgWebsite } from "react-icons/cg";
+import { useLanguage } from '../context/LanguageContext';
+
 
 const Footer = () => {
+  const { castelian } = useLanguage();
 
   const Year = new Date().getFullYear();
 
@@ -18,20 +22,34 @@ const Footer = () => {
         </svg>
         <div className="grid lg:grid-cols-4 gap-20 sm:grid-cols-1 p-20">
           <div className="flex flex-col gap-5">
-            <h2 className="text-3xl text-pink-500">Footer</h2>
+            <h2 className="text-3xl text-pink-500">{castelian? "Acerca de SPA-Tasks" : "About SPA-Tasks"}</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, deleniti dolores
-              vel ipsa reiciendis corporis similique dolor earum aut itaque.
+              {
+                castelian ?
+                "SPA-Tasks es una aplicación web con una interfaz sencilla, asistida por perritos 🐶, que permite a los usuarios crear, visualizar, editar y eliminar tareas, manteniéndolas organizadas en un solo lugar. 📝"
+                :
+                "SPA-Tasks is a web application with a simple interface, assisted by puppies 🐶, that allows users to create, view, edit, and delete tasks, keeping them organized in one place. 📝"
+              }
             </p>
           </div>
 
           <div>
             <li className="text-[22px] list-none font-semibold text-pink-500 py-2 uppercase">
-              Creativity
+              Rigoberto Martínez
             </li>
-            <li className="my-4 list-none">Website Guidlines & Ideas</li>
-            <li className="my-4 list-none">Tips & Tricks</li>
-            <li className="my-4 list-none">photography</li>
+            <img
+              className="my-4 rounded-full w-20 h-20 object-cover"
+              src="https://res.cloudinary.com/dqh2illb5/image/upload/v1715016763/myPerfil/1710771555673_Git-Hub_unujoi.jpg"
+              alt="Rigoberto Martínez"
+            />
+            <li className="my-4 list-none flex items-center">
+              <CgWebsite className="mr-2" />
+              <a href="https://porfolio-rigoberto.vercel.app/" className="hover:text-pink-500 transition-all duration-150 ease-in-out">Portafolio</a>
+            </li>
+            <li className="my-4 list-none flex items-center">
+              <FaLinkedinIn className="mr-2" />
+              <a href="https://www.linkedin.com/in/rigoberto-martinez/" className="hover:text-pink-500 transition-all duration-150 ease-in-out">LinkedIn</a>
+            </li>
           </div>
 
           <div>
