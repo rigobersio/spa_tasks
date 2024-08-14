@@ -78,7 +78,7 @@ const Footer = () => {
             <h2 className="text-[22px] font-semibold text-pink-500 py-2 uppercase">{castelian ? "Contacto" : "Contact"}</h2>
             <p className="text-[16px] my-4">{castelian ? "Correos electrónicos" : "Emails:"}</p>
             <li className="my-4 list-none flex items-center">rigoberto.developer@tutanota.com</li>
-            <li className="my-4 list-none flex items-center">devincentisfranco11@gmail.com</li>
+            <li className="my-4 list-none flex items-center">devincentisf35@gmail.com</li>
             <li className="my-4 list-none flex items-center gap-3">
               <FaGithub className="mr-1" />
               <a href="https://github.com/rigobersio/spa_tasks" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
@@ -87,23 +87,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-20">
-          <div className="h-full flex items-center justify-center mb-5">
-            <form className="w-96 relative">
-              <input type="email" placeholder=""
-                className="w-full text-gray-800 p-4 h-10 rounded-full focus:outline-none 
-                            focus:border border-pink-800" />
-              <button
-                type="Submit"
-                className="bg-pink-400 px-8 py-2 rounded-full text-white
-                                 absolute top-0 right-0"
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
-        <h6 className="text-center">&copy; Copyright © 2024 - All right reserved by UnMomentum {Year}</h6>
+        <h6 className="text-center">Copyright © 2025 - All right reserved by UnMomentum</h6>
       </div>
     </footer>
   );
