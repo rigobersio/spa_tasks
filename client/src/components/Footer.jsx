@@ -54,10 +54,21 @@ const Footer = () => {
 
           <div>
             <li className="text-[22px] list-none font-semibold text-pink-500 py-2 uppercase">
-              Creativity</li>
-            <li className="my-4 list-none">Guidlines & Ideas</li>
-            <li className="my-4 list-none">Tips & Tricks</li>
-            <li className="my-4 list-none">photography</li>
+              Franco De Vincentis
+            </li>
+            <img
+              className="my-4 rounded-full w-20 h-20 object-cover"
+              src="https://res.cloudinary.com/dqh2illb5/image/upload/v1723593004/SPA-Tasks/Franco-perfil_wwmbmu.jpg"
+              alt="Franco De Vincentis"
+            />
+            <li className="my-4 list-none flex items-center">
+              <CgWebsite className="mr-2" />
+              <a href="" className="hover:text-pink-500 transition-all duration-150 ease-in-out">Portafolio</a>
+            </li>
+            <li className="my-4 list-none flex items-center">
+              <FaLinkedinIn className="mr-2" />
+              <a href="https://www.linkedin.com/in/franco-de-vincentis/" className="hover:text-pink-500 transition-all duration-150 ease-in-out">LinkedIn</a>
+            </li>
           </div>
           <div className="mb-4 md:mb-0">
             <h2 className="text-[22px] font-semibold text-pink-500 py-2 uppercase">Contact</h2>
