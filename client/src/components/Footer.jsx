@@ -44,11 +44,13 @@ const Footer = () => {
             />
             <li className="my-4 list-none flex items-center">
               <CgWebsite className="mr-2" />
-              <a href="https://porfolio-rigoberto.vercel.app/" className="hover:text-pink-500 transition-all duration-150 ease-in-out">Portafolio</a>
+              <a href="https://porfolio-rigoberto.vercel.app/" className="text-white hover:text-pink-500 transform hover:scale-150
+                             transition-all duration-150 ease-in-out">Portafolio</a>
             </li>
             <li className="my-4 list-none flex items-center">
               <FaLinkedinIn className="mr-2" />
-              <a href="https://www.linkedin.com/in/rigoberto-martinez/" className="hover:text-pink-500 transition-all duration-150 ease-in-out">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/rigoberto-martinez/" className="text-white hover:text-pink-500 transform hover:scale-150
+                             transition-all duration-150 ease-in-out">LinkedIn</a>
             </li>
           </div>
 
@@ -63,39 +65,25 @@ const Footer = () => {
             />
             <li className="my-4 list-none flex items-center">
               <CgWebsite className="mr-2" />
-              <a href="" className="hover:text-pink-500 transition-all duration-150 ease-in-out">Portafolio</a>
+              <a href="" className="text-white hover:text-pink-500 transform hover:scale-150
+                             transition-all duration-150 ease-in-out">Portafolio</a>
             </li>
             <li className="my-4 list-none flex items-center">
               <FaLinkedinIn className="mr-2" />
-              <a href="https://www.linkedin.com/in/franco-de-vincentis/" className="hover:text-pink-500 transition-all duration-150 ease-in-out">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/franco-de-vincentis/" className="text-white hover:text-pink-500 transform hover:scale-150
+                             transition-all duration-150 ease-in-out">LinkedIn</a>
             </li>
           </div>
           <div className="mb-4 md:mb-0">
-            <h2 className="text-[22px] font-semibold text-pink-500 py-2 uppercase">Contact</h2>
-            <p className="text-[16px] my-4">Email: youremail.gmail.com</p>
-            <p className="text-[16px] my-4">Phone: +1 113-456-7890 </p>
-            <div className="flex space-x-4">
-              <a
-                className="text-white hover:text-pink-500 transform hover:scale-150 
-                            transition-all duration-150 ease-in-out" href="">
-                <FaGithub />
-              </a>
-              <a
-                className="text-white hover:text-pink-500 transform hover:scale-150
-                             transition-all duration-150 ease-in-out" href="">
-                <FaLinkedinIn />
-              </a>
-              <a
-                className="text-white hover:text-pink-500 transform hover:scale-150
-                             transition-all duration-150 ease-in-out" href="">
-                <FaTwitter />
-              </a>
-              <a
-                className="text-white hover:text-pink-500 transform hover:scale-150
-                             transition-all duration-150 ease-in-out" href="">
-                <FaInstagram />
-              </a>
-            </div>
+            <h2 className="text-[22px] font-semibold text-pink-500 py-2 uppercase">{castelian ? "Contacto" : "Contact"}</h2>
+            <p className="text-[16px] my-4">{castelian ? "Correos electrónicos" : "Emails:"}</p>
+            <li className="my-4 list-none flex items-center">rigoberto.developer@tutanota.com</li>
+            <li className="my-4 list-none flex items-center">devincentisfranco11@gmail.com</li>
+            <li className="my-4 list-none flex items-center">
+              <FaGithub className="mr-2" />
+              <a href="https://github.com/rigobersio/spa_tasks" className="text-white hover:text-pink-500 transform hover:scale-150
+                             transition-all duration-150 ease-in-out">{castelian ? "Reporio" : "Repository"}</a>
+            </li>
           </div>
         </div>
 
