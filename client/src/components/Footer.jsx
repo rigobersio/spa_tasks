@@ -42,14 +42,14 @@ const Footer = () => {
               src="https://res.cloudinary.com/dqh2illb5/image/upload/v1715016763/myPerfil/1710771555673_Git-Hub_unujoi.jpg"
               alt="Rigoberto Martínez"
             />
-            <li className="my-4 list-none flex items-center">
-              <CgWebsite className="mr-2" />
-              <a href="https://porfolio-rigoberto.vercel.app/" className="text-white hover:text-pink-500 transform hover:scale-150
+            <li className="my-4 list-none flex items-center gap-3">
+              <CgWebsite className="mr-1" />
+              <a href="https://porfolio-rigoberto.vercel.app/" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">Portafolio</a>
             </li>
-            <li className="my-4 list-none flex items-center">
-              <FaLinkedinIn className="mr-2" />
-              <a href="https://www.linkedin.com/in/rigoberto-martinez/" className="text-white hover:text-pink-500 transform hover:scale-150
+            <li className="my-4 list-none flex items-center gap-3">
+              <FaLinkedinIn className="mr-1" />
+              <a href="https://www.linkedin.com/in/rigoberto-martinez/" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">LinkedIn</a>
             </li>
           </div>
@@ -63,14 +63,14 @@ const Footer = () => {
               src="https://res.cloudinary.com/dqh2illb5/image/upload/v1723593004/SPA-Tasks/Franco-perfil_wwmbmu.jpg"
               alt="Franco De Vincentis"
             />
-            <li className="my-4 list-none flex items-center">
-              <CgWebsite className="mr-2" />
-              <a href="" className="text-white hover:text-pink-500 transform hover:scale-150
+            <li className="my-4 list-none flex items-center gap-3">
+              <CgWebsite className="mr-1" />
+              <a href="" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">Portafolio</a>
             </li>
-            <li className="my-4 list-none flex items-center">
-              <FaLinkedinIn className="mr-2" />
-              <a href="https://www.linkedin.com/in/franco-de-vincentis/" className="text-white hover:text-pink-500 transform hover:scale-150
+            <li className="my-4 list-none flex items-center gap-3">
+              <FaLinkedinIn className="mr-1" />
+              <a href="https://www.linkedin.com/in/franco-de-vincentis/" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">LinkedIn</a>
             </li>
           </div>
