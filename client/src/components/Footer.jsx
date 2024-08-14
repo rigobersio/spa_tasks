@@ -79,9 +79,9 @@ const Footer = () => {
             <p className="text-[16px] my-4">{castelian ? "Correos electrónicos" : "Emails:"}</p>
             <li className="my-4 list-none flex items-center">rigoberto.developer@tutanota.com</li>
             <li className="my-4 list-none flex items-center">devincentisfranco11@gmail.com</li>
-            <li className="my-4 list-none flex items-center">
+            <li className="my-4 list-none flex items-center gap-3">
               <FaGithub className="mr-2" />
-              <a href="https://github.com/rigobersio/spa_tasks" className="text-white hover:text-pink-500 transform hover:scale-150
+              <a href="https://github.com/rigobersio/spa_tasks" className="ml-2 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">{castelian ? "Reporio" : "Repository"}</a>
             </li>
           </div>
