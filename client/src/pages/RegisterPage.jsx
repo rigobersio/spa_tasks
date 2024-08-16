@@ -18,7 +18,7 @@ const RegisterPage = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true); // Desactivar el botón
-    toast.info('Registering, please wait...'); // Mostrar alerta de que el proceso está en curso
+    toast.info('Registering, please wait...', { autoClose: 10000 }); // Mostrar alerta de que el proceso está en curso
 
     try {
       const res = await registerRequest(data);
