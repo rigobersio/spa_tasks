@@ -18,24 +18,26 @@ const RegisterPage = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true); // Desactivar el botón
-    toast.info('Registering, please wait...', { autoClose: 10000 }); // Mostrar alerta de que el proceso está en curso
+    let messagInfo = castelian ? 'Registrando, por favor espere...' : 'Registering, please wait...';
+    let messagSuccess = castelian ? `Usuario ${data.username} creado exitosamente` : `User ${data.username} created successfully!`;
+    let messagError = castelian ? 'Error al registrar el usuario' : 'Registration error';
+    toast.info(messagInfo, { autoClose: 10000 }); // Mostrar alerta de que el proceso está en curso
 
     try {
       const res = await registerRequest(data);
       if (res.status === 200) {
         toast.dismiss(); // Descartar la alerta en curso
-        toast.success(`User ${res.data.username} created successfully!`);
+        toast.success(messagSuccess);
         setUsernameCreated(true);
       } else {
         toast.dismiss(); // Descartar la alerta en curso
         //console.error("Registration failed");
-        toast.error('Registration failed');
+        toast.error(messagError);
       }
     } catch (error) {
       toast.dismiss(); // Descartar la alerta en curso
-      toast.error('Registration error');
+      toast.error(messagError);
       //console.log("Registration error:", error);
-      toast.info('The page reloads')
       window.location.reload();
     }
   };
