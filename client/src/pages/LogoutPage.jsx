@@ -15,18 +15,21 @@ const LogoutPage = () => {
 
   const handleLogout = async () => {
     setIsSubmitting(true); // Desactivar el botón
-    toast.info('Logging out, please wait...'); // Mostrar alerta de que el proceso está en curso
+    let messageInfo = castelian ? 'Cerrando sesión, por favor espere...' : 'Logging out, please wait...';
+    let messageSuccess = castelian ? 'Sesión cerrada correctamente!' : 'Logout successful!';
+    let messageError = castelian ? 'Error al cerrar sesión' : 'Logout error';
+    toast.info(messageInfo); // Mostrar alerta de que el proceso está en curso
     
     try {
       await logoutRequest();
       logout();
       toast.dismiss(); // Descartar la alerta en curso
-      toast.success("Logout successful!");
+      toast.success(messageSuccess);
       navigate("/");
     } catch (error) {
       //console.log("Logout error:", error);
       toast.dismiss(); // Descartar la alerta en curso
-      toast.error("Logout error");
+      toast.error(messageError);
       windows.location.reload();
     }
   };

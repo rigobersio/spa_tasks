@@ -16,11 +16,12 @@ const TasksPage = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
 
   const fetchTasks = async () => {
+    let messageError = castelian ? 'Error al cargar las tareas' : 'Failed to fetch tasks';
     try {
       const res = await getTasksRequest();
       setTasks(res.data);
     } catch (error) {
-      toast.error('Failed to fetch tasks.');
+      toast.error(messageError);
     }
   };
 
@@ -29,14 +30,16 @@ const TasksPage = () => {
   }, []);
 
   const onSubmit = async (data) => {
+    let messageSuccess = castelian ? 'Tarea creada correctamente' : 'Task created successfully';
+    let messageError = castelian ? 'Error al crear la tarea' : 'Failed to create task';
     try {
       const res = await createTaskRequest(data);
       setTasks(prevTasks => [...prevTasks, res.data]);
-      toast.success('Task created successfully!');
+      toast.success(messageSuccess, { autoClose: 2000 });
       reset();
       setShowCreateModal(false); // Cerrar el modal después de crear una tarea
     } catch (error) {
-      toast.error('Failed to create task.');
+      toast.error(messageError);
     }
   };
 
@@ -45,7 +48,8 @@ const TasksPage = () => {
       const res = await getTaskRequest(taskId);
       setSelectedTask(res.data);
     } catch (error) {
-      toast.error('Failed to fetch task details.');
+      let messageErrorCatch = castelian ? 'Error al cargar los detalles de la tarea' : 'Failed to fetch task details';
+      toast.error(messageErrorCatch);
     }
   };
 
@@ -54,24 +58,28 @@ const TasksPage = () => {
   };
 
   const handleTaskUpdate = async (updatedTask) => {
+    let messageSuccess = castelian ? 'Tarea actualizada correctamente' : 'Task updated successfully';
+    let messageError = castelian ? 'Error al actualizar la tarea' : 'Failed to update task';
     try {
       await updateTaskRequest(updatedTask._id, updatedTask);
       setTasks(prevTasks => prevTasks.map(task => (task._id === updatedTask._id ? updatedTask : task)));
-      toast.success('Task updated successfully!');
+      toast.success(messageSuccess);
       setSelectedTask(null); // Cerrar el modal
     } catch (error) {
-      toast.error('Failed to update task.');
+      toast.error(messageError);
     }
   };
 
   const handleTaskDelete = async (taskId) => {
+    let messageSuccess = castelian ? 'Tarea eliminada correctamente' : 'Task deleted successfully';
+    let messageError = castelian ? 'Error al eliminar la tarea' : 'Failed to delete task';
     try {
       await deleteTaskRequest(taskId);
       setTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
-      toast.success('Task deleted successfully!');
+      toast.success(messageSuccess);
       setSelectedTask(null); // Cerrar el modal
     } catch (error) {
-      toast.error('Failed to delete task.');
+      toast.error(messageError);
     }
   };
 

@@ -17,16 +17,18 @@ const ProfilePage = () => {
 
   // Función asincrónica para obtener el perfil
   const fetchProfile = async () => {
+    let messageSuccess = castelian ? 'Perfil cargado correctamente' : 'Profile loaded successfully';
+    let messageError = castelian ? 'Error al cargar el perfil' : 'Failed to load profile';
     try {
       const res = await getProfileRequest();
       //console.log("Perfil cargado: ", res.data);  // Agregado para depuración
       setProfile(res.data);
       setValue('username', res.data.username);
       setValue('email', res.data.email);
-      toast.success('Profile loaded successfully!');
+      toast.success(messageSuccess, { autoClose: 2000 });
     } catch (error) {
       console.error("Error al cargar el perfil:", error);  // Agregado para depuración
-      toast.error('Failed to load profile.');
+      toast.error(messageError);
     }
   };
 
@@ -36,8 +38,11 @@ const ProfilePage = () => {
 
 
   const onSubmit = async (data) => {
+    let messageInfo = castelian ? 'Actualizando perfil, por favor espere...' : 'Updating profile, please wait...';
+    let messageSuccess = castelian ? 'Perfil actualizado correctamente' : 'Profile updated successfully';
+    let messageError = castelian ? 'Error al actualizar el perfil' : 'Failed to update profile';
     setIsSubmitting(true); // Desactivar el botón
-    toast.info('Updating profile, please wait...'); // Mostrar alerta de que el proceso está en curso
+    toast.info(messageInfo); // Mostrar alerta de que el proceso está en curso
 
     try {
       if (isEditing) {
@@ -45,33 +50,35 @@ const ProfilePage = () => {
         const res = await updateProfileRequest({ ...data, currentPassword: updateData });
         //console.log("Perfil actualizado: ", res.data);  // Agregado para depuración
         toast.dismiss(); // Descartar la alerta en curso
-        toast.success('Profile updated successfully!');
+        toast.success(messageSuccess);
         fetchProfile();
         setIsEditing(false);
         setShowConfirmModal(false);
         setUpdateData(null);
       } else {
         toast.dismiss(); // Descartar la alerta en curso
-        toast.error('Please confirm your password.');
+        toast.error(messageError);
       }
     } catch (error) {
       toast.dismiss(); // Descartar la alerta en curso
       console.error("Error al actualizar el perfil:", error);  // Agregado para depuración
-      toast.error('Failed to update profile.');
+      toast.error(messageError);
       setIsSubmitting(false);
     }
   };
 
   const handleConfirm = async (password) => {
+    let messageSuccess = castelian ? 'Contraseña confirmada correctamente' : 'Password confirmed successfully';
+    let messageError = castelian ? 'Error al confirmar la contraseña' : 'Failed to confirm password';
     try {
       await updateProfileRequest({ currentPassword: password });
       setIsEditing(true);
       setShowConfirmModal(false);
       setUpdateData(password); // Guardar la contraseña confirmada para la actualización posterior
-      toast.success('Password confirmed successfully!');
+      toast.success(messageSuccess);
     } catch (error) {
       console.error("Error al confirmar la contraseña:", error);
-      toast.error('Failed to confirm password.');
+      toast.error(messageError);
     }
   };
 
