@@ -18,7 +18,10 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true); // Desactivar el botón
-    toast.info('Logging in, please wait...', { autoClose: 10000 }); // Mostrar alerta de que el proceso está en curso
+    let messagInfo = castelian ? 'Iniciando sesión, por favor espere...' : 'Logging in, please wait...';
+    let messageSuccess = castelian ? 'Sesión iniciada correctamente!' : 'Login successful!';
+    let messageError = castelian ? 'Error al iniciar sesión' : 'Login failed';
+    toast.info(messagInfo, { autoClose: 10000 }); // Mostrar alerta de que el proceso está en curso
 
     try {
       const res = await loginRequest(data);
@@ -28,17 +31,16 @@ const LoginPage = () => {
         //console.log('Login successful!');
         login();
         toast.dismiss(); // Descartar la alerta en curso
-        toast.success('Login successful!');
+        toast.success(messageSuccess);
       } else {
         toast.dismiss(); // Descartar la alerta en curso
         console.error("Login failed");
-        toast.success('Login failed');
+        toast.success(messageError);
       }
     } catch (error) {
       toast.dismiss(); // Descartar la alerta en curso
       console.log("Login error:", error);
-      toast.error('Login error');
-      toast.info('The page reloads')
+      toast.error(messageError);
       window.location.reload();
     }
   };
