@@ -18,7 +18,7 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true); // Desactivar el botón
-    toast.info('Logging in, please wait...'); // Mostrar alerta de que el proceso está en curso
+    toast.info('Logging in, please wait...', { autoClose: 10000 }); // Mostrar alerta de que el proceso está en curso
 
     try {
       const res = await loginRequest(data);
