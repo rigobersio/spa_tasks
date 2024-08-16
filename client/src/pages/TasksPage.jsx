@@ -63,7 +63,7 @@ const TasksPage = () => {
     try {
       await updateTaskRequest(updatedTask._id, updatedTask);
       setTasks(prevTasks => prevTasks.map(task => (task._id === updatedTask._id ? updatedTask : task)));
-      toast.success(messageSuccess););
+      toast.success(messageSuccess);
       setSelectedTask(null); // Cerrar el modal
     } catch (error) {
       toast.error(messageError);

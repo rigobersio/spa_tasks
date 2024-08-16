@@ -7,7 +7,6 @@ const ConfirmPasswordModal = ({ onConfirm, onClose }) => {
 
   const onSubmit = (data) => {
     onConfirm(data.password);
-    toast.success('Password confirmed successfully!');
   };
 
   return (

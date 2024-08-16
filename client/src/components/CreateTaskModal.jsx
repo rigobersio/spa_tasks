@@ -8,7 +8,6 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
   const handleFormSubmit = async (data) => {
     await onSubmit(data);
     reset();
-    toast.success('Task created successfully!');
   };
 
   return (

@@ -17,10 +17,9 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
     try {
       const updatedTask = { ...task, ...data };
       onUpdate(updatedTask);
-      toast.success('Task updated successfully!');
+     
     } catch (error) {
       console.error("Error al actualizar la tarea:", error);
-      toast.error('Failed to update task.');
       setMessage("Failed to update task.");
     }
   };
