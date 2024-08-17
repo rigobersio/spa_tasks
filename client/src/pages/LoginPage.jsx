@@ -21,7 +21,7 @@ const LoginPage = () => {
     let messagInfo = castelian ? 'Iniciando sesión, por favor espere...' : 'Logging in, please wait...';
     let messageSuccess = castelian ? 'Sesión iniciada correctamente!' : 'Login successful!';
     let messageError = castelian ? 'Error al iniciar sesión' : 'Login failed';
-    toast.info(messagInfo, { autoClose: 10000 }); // Mostrar alerta de que el proceso está en curso
+    toast.info(messagInfo, { autoClose: 20000 }); // Mostrar alerta de que el proceso está en curso
 
     try {
       const res = await loginRequest(data);
