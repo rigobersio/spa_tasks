@@ -44,17 +44,19 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
             {errors.title && <p className="text-red-600">{castelian ? "Título es obligatorio" : "Title is required"}</p>}
           </div>
           <div className="flex flex-col mx-1 sm:mx-6">
-            <label htmlFor="description" className="text-lg font-medium">Description</label>
+            <label htmlFor="description" className="text-lg font-medium">{castelian ? "Descripción" : "Description"}</label>
             <textarea
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2 h-20 max-h-32 overflow-y-auto"
               placeholder="Description"
               {...register("description", { required: true })}
             />
-            {errors.description && <p className="text-red-600">Description is required</p>}
+            {errors.description && <p className="text-red-600">
+              {castelian ? "La descripción es obligatoria" : "Description is required"}
+              </p>}
           </div>
 
           <div className="flex flex-col mx-1 sm:mx-6">
-            <label htmlFor="date" className="text-lg font-medium">Date</label>
+            <label htmlFor="date" className="text-lg font-medium">{castelian ? "Fecha" : "Date"}</label>
             <input
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
               type="date"
@@ -62,11 +64,16 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
             />
           </div>
           <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5">
-            <button type="submit" className="bg-blue-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-blue-700 transition duration-300">Update Task</button>
+            <button type="submit" className="bg-blue-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-blue-700 transition duration-300">
+              {castelian ? "Actualizar Tarea" : "Update Task"}
+              </button>
             <button type="button" className="bg-red-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-red-700 transition duration-300 ml-4" onClick={() => {
               onDelete(task._id);
-            }}>Delete Task</button>
-            <button type="button" className="bg-gray-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-gray-700 transition duration-300 ml-4" onClick={onClose}>Cancel</button>
+            }}>
+              {castelian ? "Eliminar Tarea" : "Delete Task"}
+              </button>
+            <button type="button" className="bg-gray-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-gray-700 transition duration-300 ml-4" onClick={onClose}>
+              {castelian ? "Cancelar" : "Cancel"}</button>
           </div>
         </form>
       </div>
