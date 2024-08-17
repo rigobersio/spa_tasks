@@ -24,7 +24,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
             <input
               className="border border-gray-300 text-yellow-800 sm:px-4 px-1 py-2 rounded-md my-2"
               type="text"
-              placeholder="Title"
+              placeholder={castelian ? "Título" : "Title"}
               {...register("title", { required: true })}
             />
             {errors.title && <p className="text-red-600">{castelian ? "Título es obligatorio" : "Title is required"}</p>}
@@ -33,7 +33,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
             <label htmlFor="description" className="text-lg font-medium">{castelian ? "Descripción" : "Description"}</label>
             <textarea
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2 h-20 max-h-32 overflow-y-auto"
-              placeholder="Description"
+              placeholder={castelian ? "Descripción" : "Description"}
               {...register("description", { required: true })}
             />
             {errors.description && <p className="text-red-600">{castelian ? "La descripción es obligatoria" : "Description is required"}</p>}
