@@ -15,6 +15,8 @@ const TasksPage = () => {
   const [selectedTask, setSelectedTask] = useState(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
 
+  const messageDataNull = castelian ? 'No ha asignado una fecha' : 'No date assigned';
+
   const fetchTasks = async () => {
     let messageError = castelian ? 'Error al cargar las tareas' : 'Failed to fetch tasks';
     try {
@@ -166,7 +168,7 @@ const TasksPage = () => {
                       /*<p>{task.date}</p>
                       {console.log("soy typeof date: ",typeof task.date)}
                       */}
-                      <p>{task.date === null ? "null" :task.date.split("T")[0]}</p>
+                      <p>{task.date === null ? messageDataNull :task.date.split("T")[0]}</p>
                       {/*<p>data más tolocaledata: {task.date.toLocaleDateString()}</p>*/}
                       {/*<p>instanacia de new Data con tolocale {new Date(task.date).toLocaleDateString()}</p>*/}
                     </li>
