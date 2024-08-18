@@ -10,7 +10,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
 
   const handleFormSubmit = async (data) => {
     await onSubmit(data);
-    console.log(data);
+    //console.log(data);
     reset();
   };
 
