@@ -44,7 +44,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
             <input
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
               type="date"
-              {...register("date", { required: true })}
+              {...register("date")}
             />
             {errors.date && <p className="text-red-600">{castelian ? "La fecha es obligatoria" : "Date is required"}</p>}
           </div>
