@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { toast } from 'react-toastify';
+//import { toast } from 'react-toastify';
 import { useLanguage } from '../context/LanguageContext';
 
 
@@ -11,6 +11,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
 
   const handleFormSubmit = async (data) => {
     await onSubmit(data);
+    console.log(data);
     reset();
   };
 
