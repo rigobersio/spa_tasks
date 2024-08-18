@@ -9,7 +9,6 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
 
 
   const handleFormSubmit = async (data) => {
-    if(data.date === "") data.date = new Date().toLocaleDateString();
     await onSubmit(data);
     console.log(data);
     reset();
@@ -45,8 +44,9 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
             <input
               className="border border-gray-300 text-yellow-800 px-4 py-2 rounded-md my-2"
               type="date"
-              {...register("date")}
+              {...register("date", { required: true })}
             />
+            {errors.date && <p className="text-red-600">{castelian ? "La fecha es obligatoria" : "Date is required"}</p>}
           </div>
           <div className="flex justify-center lg:pt-8 lg:mt-12 pb-5">
             <button type="submit" className="bg-blue-500 text-white lg:py-2 py-1 px-4 rounded-md shadow-md hover:bg-blue-700 transition duration-300">{castelian ? "Crear Tarea" : "Create Task"}</button>
