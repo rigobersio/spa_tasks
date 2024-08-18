@@ -166,7 +166,7 @@ const TasksPage = () => {
                       /*<p>{task.date}</p>
                       {console.log("soy typeof date: ",typeof task.date)}
                       */}
-                      <p>{typeof task.date === "string" ? task.date.split("T")[0] : "task.date"}</p>
+                      <p>{task.date.split("T")[0] || task.date}</p>
                     
                       {/*<p>instanacia de new Data con tolocale {new Date(task.date).toLocaleDateString()}</p>*/}
                     </li>
