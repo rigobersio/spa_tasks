@@ -162,6 +162,7 @@ const TasksPage = () => {
                   {tasks.map(task => (
                     <li key={task._id} className="mb-4 p-4 border rounded-lg shadow-sm bg-white transition hover:bg-slate-100" onClick={() => handleTaskClick(task._id)}>
                       <h3 className="text-xl font-semibold">{task.title}</h3>
+                      {console.log(task.date)}
                       <p>{new Date(task.date).toLocaleDateString()}</p>
                     </li>
                   ))}
