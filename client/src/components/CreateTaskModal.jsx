@@ -9,7 +9,7 @@ const CreateTaskModal = ({ onClose, onSubmit }) => {
 
 
   const handleFormSubmit = async (data) => {
-    if(data.date === "") data.date = new Date().toLocaleDateString;
+    if(data.date === "") data.date = new Date().toLocaleDateString();
     await onSubmit(data);
     console.log(data);
     reset();
