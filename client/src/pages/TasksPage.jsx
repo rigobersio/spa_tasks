@@ -162,10 +162,12 @@ const TasksPage = () => {
                   {tasks.map(task => (
                     <li key={task._id} className="mb-4 p-4 border rounded-lg shadow-sm bg-white transition hover:bg-slate-100" onClick={() => handleTaskClick(task._id)}>
                       <h3 className="text-xl font-semibold">{task.title}</h3>
-                      <p>{task.date}</p>
+                      {
+                      /*<p>{task.date}</p>
                       {console.log("soy typeof date: ",typeof task.date)}
+                      */}
                       <p>{task.date.split("T")[0]}</p>
-                      {/*<p>data más tolocaledata: {task.date.toLocaleDateString()}</p>*/}
+                    
                       {/*<p>instanacia de new Data con tolocale {new Date(task.date).toLocaleDateString()}</p>*/}
                     </li>
                   ))}
