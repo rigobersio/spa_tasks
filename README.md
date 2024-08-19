@@ -1,7 +1,4 @@
-GPT
-
-¡Claro! A continuación te proporciono un archivo README.md que describe el proyecto:
-SPA-Tasks
+# SPA-Tasks
 
 SPA-Tasks es una aplicación web de gestión de tareas diseñada como una Single Page Application (SPA). Esta aplicación permite a los usuarios registrarse, iniciar sesión, gestionar sus tareas diarias y actualizar la información de su perfil. Es una herramienta ideal para organizar actividades y simplificar la vida cotidiana.
 Características
