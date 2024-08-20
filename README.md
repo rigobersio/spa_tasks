@@ -26,7 +26,7 @@ Backend
     Node.js: Entorno de ejecución de JavaScript en el servidor.
     Express: Framework web para Node.js.
     MongoDB: Base de datos NoSQL para almacenar datos de usuarios y tareas.
-    Zod: 
+    Zod: Librería para validación de tipos de datos.
     Mongoose: Librería de modelado de datos para MongoDB y Node.js.
     JWT: JSON Web Tokens para autenticación segura.
     Bcrypt: Para encriptar contraseñas de los usuarios.
