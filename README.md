@@ -37,14 +37,20 @@ SPA-Tasks es una aplicación web de gestión de tareas diseñada como una Single
     MongoDB Atlas: Plataforma utilizada para la base de datos.
 
 🧑‍💻 Desarrolladores
+
 Rigoberto Martínez
+
+
 <img src="https://res.cloudinary.com/dqh2illb5/image/upload/v1715016763/myPerfil/1710771555673_Git-Hub_unujoi.jpg" alt="Rigoberto Martínez" width="100" style="border-radius: 50%;">
 
     🌐 Portafolio
     💼 LinkedIn
     📧 rigoberto.developer@tutanota.com
 
+
 Franco De Vincentis
+
+
 <img src="https://res.cloudinary.com/dqh2illb5/image/upload/v1723593004/SPA-Tasks/Franco-perfil_wwmbmu.jpg" alt="Franco De Vincentis" width="100" style="border-radius: 50%;">
 
     💼 LinkedIn
