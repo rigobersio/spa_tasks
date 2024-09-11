@@ -12,6 +12,22 @@ export const getTasks = async (req, res) => {
   }
 };
 
+export const getTask = async (req, res) => {
+  try {
+    const task = await Task.findById(req.params.id).populate("user");
+
+    if (!task) {
+      console.log("Tarea no encontrada:", req.params.id); // Depuración del error
+      return res.status(404).json({ message: "Task not found" });
+    }
+
+    res.json(task);
+  } catch (error) {
+    console.error("Error al obtener la tarea:", error); // Depuración del error
+    res.status(500).json({ message: "Error al obtener la tarea" });
+  }
+};
+
 export const createTask = async (req, res) => {
   try {
     const { title, description, date } = req.body;
@@ -30,22 +46,6 @@ export const createTask = async (req, res) => {
   } catch (error) {
     console.error("Error al crear la tarea:", error); // Depuración del error
     res.status(500).json({ message: "Error al crear la tarea" });
-  }
-};
-
-export const getTask = async (req, res) => {
-  try {
-    const task = await Task.findById(req.params.id).populate("user");
-
-    if (!task) {
-      console.log("Tarea no encontrada:", req.params.id); // Depuración del error
-      return res.status(404).json({ message: "Task not found" });
-    }
-
-    res.json(task);
-  } catch (error) {
-    console.error("Error al obtener la tarea:", error); // Depuración del error
-    res.status(500).json({ message: "Error al obtener la tarea" });
   }
 };
 
