@@ -1,13 +1,11 @@
 import React from "react";
-import { FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CgWebsite } from "react-icons/cg";
 import { useLanguage } from '../context/LanguageContext';
 
 
 const Footer = () => {
   const { castelian } = useLanguage();
-
-  const Year = new Date().getFullYear();
 
   return (
     <footer className="relative bg-[#5D9C59] text-yellow-50 transition">
@@ -44,12 +42,12 @@ const Footer = () => {
             />
             <li className="my-4 list-none flex items-center gap-3">
               <CgWebsite className="mr-1" />
-              <a href="https://porfolio-rigoberto.vercel.app/" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
+              <a href="https://porfolio-rigoberto.vercel.app/" target="_blank" rel="noreferrer" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">Portafolio</a>
             </li>
             <li className="my-4 list-none flex items-center gap-3">
               <FaLinkedinIn className="mr-1" />
-              <a href="https://www.linkedin.com/in/rigoberto-martinez/" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
+              <a href="https://www.linkedin.com/in/rigoberto-martinez/" target="_blank" rel="noreferrer" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">LinkedIn</a>
             </li>
           </div>
@@ -65,12 +63,12 @@ const Footer = () => {
             />
             <li className="my-4 list-none flex items-center gap-3">
               <CgWebsite className="mr-1" />
-              <a href="" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
+              <a href="" target="_blank" rel="noreferrer" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">Portafolio</a>
             </li>
             <li className="my-4 list-none flex items-center gap-3">
               <FaLinkedinIn className="mr-1" />
-              <a href="https://www.linkedin.com/in/franco-de-vincentis/" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
+              <a href="https://www.linkedin.com/in/franco-de-vincentis/" target="_blank" rel="noreferrer" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
                              transition-all duration-150 ease-in-out">LinkedIn</a>
             </li>
           </div>
