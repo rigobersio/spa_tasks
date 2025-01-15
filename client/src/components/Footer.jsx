@@ -42,13 +42,25 @@ const Footer = () => {
             />
             <li className="my-4 list-none flex items-center gap-3">
               <CgWebsite className="mr-1" />
-              <a href="https://porfolio-rigoberto.vercel.app/" target="_blank" rel="noreferrer" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
-                             transition-all duration-150 ease-in-out">Portafolio</a>
+              <a
+                className="ml-1 text-white hover:text-pink-500 transform hover:scale-150 transition-all duration-150 ease-in-out"
+                href="https://porfolio-rigoberto.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Portafolio
+              </a>
             </li>
             <li className="my-4 list-none flex items-center gap-3">
               <FaLinkedinIn className="mr-1" />
-              <a href="https://www.linkedin.com/in/rigoberto-martinez/" target="_blank" rel="noreferrer" className="ml-1 text-white hover:text-pink-500 transform hover:scale-150
-                             transition-all duration-150 ease-in-out">LinkedIn</a>
+              <a
+                className="ml-1 text-white hover:text-pink-500 transform hover:scale-150 transition-all duration-150 ease-in-out"
+                href="https://www.linkedin.com/in/rigoberto-martinez/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
             </li>
           </div>
 
